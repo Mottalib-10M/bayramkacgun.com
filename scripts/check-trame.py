@@ -78,18 +78,24 @@ SERVICE = re.compile(
     # Finnois (fi-laskurit, 2026-10-05)
     r'tietoa|laskentatapa|yhteystiedot|toimitusperiaatteet|tietosuoja|kayttoehdot|evasteet|upota-laskuri|'
     # Espagnol et italien (calcularsueldoneto.mx, aliquoteimu.it, 2026-10-03)
-    r'glosario|domande-frequenti)', re.I)
+    r'glosario|domande-frequenti|'
+    # Turc et indonésien (tr-bayram, id-kalender, 2026-10-28) : mentions, confidentialité,
+    # cookies, à propos, méthode, contact, ligne éditoriale.
+    r'yasal-bilgiler|gizlilik|cerezler|hakkimizda|yontem(?=/|$)|iletisim|yayin-ilkeleri|kullanim-kosullari|'
+    r'tentang-kami|privasi|kebijakan-privasi|ketentuan|syarat-ketentuan|kontak|kebijakan-redaksi|cookie(?=/|$))', re.I)
 
 # Liens que le pied de page doit porter sur toutes les pages (§8.4 identité
 # légale, §12). On accepte n'importe laquelle des variantes linguistiques.
 FOOTER_LINKS = {
     'legal':   r'(kayttoehdot|impressum|mentions-legales|aviso-legal|legal-notice|colofon|legal|'
-               r'terms|conditions|voorwaarden|disclaimer|villkor|betingelser|vilkar|vilkaar|regulamin|nota-prawna)',
+               r'terms|conditions|voorwaarden|disclaimer|villkor|betingelser|vilkar|vilkaar|regulamin|nota-prawna|'
+               # Turc et indonésien (2026-10-28)
+               r'yasal-bilgiler|kullanim-kosullari|ketentuan)',
     'privacy': r'(tietosuoja|datenschutz|privacy|confidentialite|confidentialidade|privacidad|'
                r'privacidade|protection-donnees|gegevensbescherming|persondata|personvern|'
-               r'integritetspolicy|privatliv|polityka-prywatnosci)',
-    'about':   r'(tietoa|about|a-propos|ueber-uns|over-ons|sobre|chi-siamo|om-os|om-oss|o-nas)',
-    'method':  r'(laskentatapa|method|methode|methodik|methodologie|metodolog|metod|metode)',
+               r'integritetspolicy|privatliv|polityka-prywatnosci|gizlilik|privasi)',
+    'about':   r'(tietoa|about|a-propos|ueber-uns|over-ons|sobre|chi-siamo|om-os|om-oss|o-nas|hakkimizda|tentang-kami)',
+    'method':  r'(laskentatapa|method|methode|methodik|methodologie|metodolog|metod|metode|yontem)',
 }
 
 # §10.1 — réglages par défaut de Tailwind et des bibliothèques de composants.
@@ -125,7 +131,13 @@ DISCLAIMER = re.compile(
     # Italien (it-calendario-ponti, 2026-10-28) : « il sito non sostituisce una consulenza ».
     r'non sostituisc|'
     # Portugais (br-feriados, 2026-10-28) : « não substitui orientação jurídica ».
-    r'n[ãa]o substitu|n[ãa]o constitu)', re.I)
+    r'n[ãa]o substitu|n[ãa]o constitu|'
+    # Turc (tr-bayram, 2026-10-28) : « yatırım / hukuki tavsiye değildir », « bilgi amaçlıdır »,
+    # « resmi kaynağın yerine geçmez ».
+    r'tavsiye(?:si)? değildir|bilgi(?:lendirme)? amaçl|yerine geçmez|'
+    # Indonésien (id-kalender, 2026-10-28) : « bukan nasihat hukum », « hanya untuk informasi »,
+    # « bersifat panduan », « tidak menggantikan ».
+    r'bukan nasihat|hanya untuk informasi|hanya sebagai informasi|bersifat (?:panduan|informatif)|tidak menggantikan)', re.I)
 
 ISO_DATE = re.compile(r'\b20\d{2}-\d{2}-\d{2}\b')
 # La date de mise à jour est désormais écrite dans la langue du site
@@ -543,7 +555,9 @@ def _lettres(t, translit=False):
     import unicodedata
     # ä, ö, ü, ß s'écrivent ae, oe, ue, ss dans un domaine allemand (stromerpraemie.de « Stromerprämie »),
     # mais a, o dans un domaine suédois ou finnois (lonkalkylator.se « Lönkalkylator ») : on accepte les deux.
-    t = t.lower().replace('ß', 'ss')
+    # « ı » turc (sans point) n'a pas de décomposition NFD : il s'écrit « i » dans un domaine
+    # (« Bayram Takvimi » → bayramtakvimi, 2026-10-28).
+    t = t.lower().replace('ß', 'ss').replace('ı', 'i')
     if translit:
         t = t.replace('ä', 'ae').replace('ö', 'oe').replace('ü', 'ue')
     return re.sub(r'[^a-z0-9]', '', unicodedata.normalize('NFD', t))

@@ -40,8 +40,11 @@ es-ES, nl-NL, nl-BE, et la variante européenne par défaut) :
     (ou « Cookies et données », « Personal data », « Datenschutz »…) est remplacée — le reste,
     propre au site, est gardé ; sinon une page type est écrite.
 Les chemins viennent de src/i18n/routes.ts (routes « privacy », « cookies », « terms »), la
-région de LANG_TAGS (site-config.ts). Une langue non gérée (it, pt, fi, sv, nb, da, pl, el…)
+région de LANG_TAGS (site-config.ts). Une langue non gérée (it, pt, fi, sv, nb, da, pl, el, tr, id…)
 est signalée : ses pages se rédigent à la main sur le modèle français, avec les mêmes faits.
+Turc et indonésien (2026-10-28) : non générés à dessein. Avec GA4, la KVKK (loi n° 6698, art. 9 :
+transfert à l'étranger par clauses types notifiées à l'Autorité) et l'UU PDP (loi n° 27/2022,
+art. 56) demandent des faits que l'éditeur doit établir avant qu'un texte type puisse les affirmer.
 
 Contrôle ensuite : npm run check (check-cookies.py vérifie GA4, consentement par défaut et
 pages légales). L'ancienne version (7 sites de la vague du 2026-10-05) est dans

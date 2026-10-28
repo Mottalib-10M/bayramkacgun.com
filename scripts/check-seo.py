@@ -96,7 +96,11 @@ SERVICE = re.compile(
     # (lonnetterskatt.no, 2026-09-27).
     r'ordliste|ordbog|metode|redaksjonell|redaktionel|personvern|privatliv|vilkar|vilkaar|'
     r'informasjonskapsler|om-os|woordenlijst|redactie|'
-    r'atualizacoes|nyheter|updates|glossar|glossario|glossaire|glossary|ordlista)',
+    r'atualizacoes|nyheter|updates|glossar|glossario|glossaire|glossary|ordlista|'
+    # Turc et indonésien : mêmes pages de service que check-trame (tr-bayram, id-kalender,
+    # 2026-10-28 ; tr-bayram avait allongé « yontem » et « hakkimizda » pour passer).
+    r'yasal-bilgiler|gizlilik|cerezler|hakkimizda|yontem(?=/|$)|iletisim|yayin-ilkeleri|kullanim-kosullari|'
+    r'tentang-kami|privasi|kebijakan-privasi|ketentuan|syarat-ketentuan|kontak|kebijakan-redaksi)',
     re.I)
 # Page de longue traîne « par montant » (ou par ancienneté, cf. AU) : un segment
 # d'URL portant un nombre. Les millésimes (2024-2030) sont exclus, sinon un slug

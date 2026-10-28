@@ -22,9 +22,9 @@ DOMAINES = [l.strip() for l in open(os.path.join(ROOT, '_trame/domaines-ovh.txt'
 # Sources officielles : liste partagée avec check-seo.py (sources_officielles.py, RECETTE §26 du 2026-10-16).
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import sources_officielles
-RE_A_PROPOS = re.compile(r"/(about|about-us|a-propos|qui-sommes-nous|ueber-uns|uber-uns|sobre|sobre-nosotros|sobre-nos|chi-siamo|over-ons|om-oss|om-os|om|quem-somos|tietoa|meista|o-nas|sxetika|chi-siamo|despre)\b", re.I)
-RE_METHODE = re.compile(r"(method|methodo|méthodo|methodik|metodolog|metode|berekening|calcul-|how-we-calculate|comment-calcul|sources|laskentatapa|menetelma|metod)", re.I)
-RE_MAJ = re.compile(r"(mis à jour|mise à jour|updated|last updated|aktualisiert|stand:|actualizado|aggiornat|bijgewerkt|oppdatert|uppdaterad|atualizad|opdateret|päivitetty|zaktualizowano|aktualizacja|ενημερώθηκε|ενημέρωση|aggiornato)", re.I)
+RE_A_PROPOS = re.compile(r"/(about|about-us|a-propos|qui-sommes-nous|ueber-uns|uber-uns|sobre|sobre-nosotros|sobre-nos|chi-siamo|over-ons|om-oss|om-os|om|quem-somos|tietoa|meista|o-nas|sxetika|chi-siamo|despre|hakkimizda|tentang-kami)\b", re.I)
+RE_METHODE = re.compile(r"(method|methodo|méthodo|methodik|metodolog|metode|berekening|calcul-|how-we-calculate|comment-calcul|sources|laskentatapa|menetelma|metod|yontem)", re.I)
+RE_MAJ = re.compile(r"(mis à jour|mise à jour|updated|last updated|aktualisiert|stand:|actualizado|aggiornat|bijgewerkt|oppdatert|uppdaterad|atualizad|opdateret|päivitetty|zaktualizowano|aktualizacja|ενημερώθηκε|ενημέρωση|aggiornato|güncellendi|güncelleme|diperbarui|pembaruan)", re.I)
 SLOTS = re.compile(r"<ins\b[^>]*adsbygoogle|data-ad-slot|class=[\"'][^\"']*\bad-slot", re.I)
 
 def lire(p):

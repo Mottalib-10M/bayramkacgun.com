@@ -47,7 +47,10 @@ FLAGS = {
     'ae': ('ae', ['#00732F', '#FFFFFF', '#000000', '#FF0000']),
     'sa': ('h', ['#006C35']),                             # fond vert seul, sans shahada ni sabre
     'br': ('br', ['#009739', '#FEDD00', '#012169']),       # losange et globe, sans devise ni étoiles
-    'tr': ('h', ['#E30A17']),                             # fond rouge seul, sans croissant ni étoile
+    # Turquie : fond rouge seul, sans croissant ni étoile. Pas de bande blanche : rouge sur blanc
+    # serait le dessin de l'Indonésie (et de Monaco), le pays ne se lirait plus (2026-10-28).
+    'tr': ('h', ['#E30A17']),
+    'id': ('h', ['#E70011', '#FFFFFF']),                   # rouge sur blanc (Sang Saka Merah-Putih)
 }
 
 HOUSE = '<path d="M16 7.5 7 15h2.6v8.5h4.7v-5.2h3.4v5.2h4.7V15H25z" fill="#fff" stroke="#0B1F33" stroke-width="1.6" stroke-linejoin="round" paint-order="stroke"/>'

@@ -62,26 +62,36 @@ ANCIEN_CLARITY = re.compile(r'__clarityLoad|consent-choice')
 
 # Pages légales, reconnues à leur adresse (toutes langues du portefeuille).
 P_PRIVACY = re.compile(r'(privacy|privacidad|privacidade|confidentialit|datenschutz|privacybeleid|riservatezza'
-                       r'|prywatnos|integritet|personvern|tietosuoja|aporrito|aporrhto|gdpr|privatliv)', re.I)
-P_COOKIES = re.compile(r'(cookie|temoins|evaste|kakor|informasjonskapsl|ciasteczk)', re.I)
+                       r'|prywatnos|integritet|personvern|tietosuoja|aporrito|aporrhto|gdpr|privatliv'
+                       # Turc et indonésien (tr-bayram, id-kalender, 2026-10-28)
+                       r'|gizlilik|kisisel-veri|kvkk|privasi)', re.I)
+P_COOKIES = re.compile(r'(cookie|temoins|evaste|kakor|informasjonskapsl|ciasteczk|cerez)', re.I)
 P_LEGAL = re.compile(r'(mentions-legales|legal|impressum|aviso-legal|note-legali|terms|cgu|conditions'
                      r'|voorwaarden|colofon|vilkar|vilkaar|villkor|kayttoehdot|agb|termini|termos|regulamin'
-                     r'|nota-prawna|condiciones|disclaimer|oroi|nomik|colophon|imprint)', re.I)
+                     r'|nota-prawna|condiciones|disclaimer|oroi|nomik|colophon|imprint'
+                     r'|yasal|kullanim-kosullari|ketentuan|syarat)', re.I)
 
 NEGATION = re.compile(
     r"\b(no|not|none|never|without|nor|aucun|aucune|pas|ni|sans|jamais|kein|keine|keinen|keinem|nicht|ohne"
     r"|geen|niet|zonder|nessun|nessuna|non|senza|ningún|ninguna|ninguno|sin|nunca|nenhum|nenhuma|não|sem"
     r"|inga|ingen|inte|utan|ikke|uten|ei|eikä|ilman|nie|żadnych|żadnego|żadne|bez|δεν|κανένα|καμία|χωρίς"
-    r"|μη|لا|ليس|بدون)\b"
+    r"|μη|لا|ليس|بدون"
+    # Indonésien et turc (id-kalender, tr-bayram, 2026-10-28) : « tidak menaruh cookie », « tanpa cookie »,
+    # « hiçbir çerez », « çerez yok ». Le turc nie surtout par suffixe verbal : « kullanmaz »,
+    # « kullanmıyor », « bırakmamaktadır » (namaz excepté).
+    # (« tak » est exclu : il veut dire « oui » en polonais ; suffixes en minuscules seulement,
+    # pour ne pas lire « Gómez » comme une négation.)
+    r"|tidak|tanpa|bukan|belum|hiçbir|hiç|yok|değil|olmadan"
+    r"|(?-i:[a-zçğıöşü]\w*(?<!\bna)m[ae]z|[a-zçğıöşü]\w*m[ıiuü]yor\w*|[a-zçğıöşü]\w*m[ae]m[ae]kt[ae]d[ıi]r))\b"
     # Le chinois n'a pas d'espaces : \b ne s'y applique pas (sg-car-cost, 2026-10-24 : « 本网站不设置 Cookie » non lu).
     r"|(不|没有|沒有|无|無|未)", re.I)
-COOKIE_MOT = re.compile(r'(cookie|t[ée]moin|evästeit|evästet|eväste|kakor|kaka|informasjonskapsl|ciasteczk|cookies)', re.I)
+COOKIE_MOT = re.compile(r'(cookie|t[ée]moin|evästeit|evästet|eväste|kakor|kaka|informasjonskapsl|ciasteczk|cookies|çerez)', re.I)
 BANDEAU_MOT = re.compile(r'(bandeau|banni[eè]re|banner|baner|banier|bannière|pop-?up|μπάνερ|banderol|aviso de cookies'
                          r'|cookie[- ]?(settings|einstellungen|instellingen|preferences|inställningar|innstillinger'
-                         r'|asetukset|ustawienia)|gérer les cookies|paramètres des cookies|gestione dei cookie'
+                         r'|asetukset|ustawienia)|gérer les cookies|paramètres des cookies|gestione dei cookie|çerez (?:ayarları|bildirimi)|pengaturan cookie'
                          r'|configurar cookies|gestionar cookies)', re.I)
 CONSENT_MOT = re.compile(r'(consent|consentement|einwilligung|zustimmung|toestemming|consenso|consentimiento'
-                         r'|consentimento|samtycke|samtykke|suostum|zgod[aęy]|συγκατάθεσ|موافقة)', re.I)
+                         r'|consentimento|samtycke|samtykke|suostum|zgod[aęy]|συγκατάθεσ|موافقة|açık rıza|persetujuan)', re.I)
 GOOGLE_MOT = re.compile(r'(google analytics|\bGA4\b|_ga\b|_gid\b)', re.I)
 PUB_MOT = re.compile(r'(adsense|google ads|doubleclick)', re.I)
 GA_ID = re.compile(r'(?<![A-Za-z0-9_-])G-[A-Z0-9]{10}(?![A-Za-z0-9_-])')
@@ -106,7 +116,7 @@ def ga4_attendu(site: Path):
     m = re.search(r"export\s+const\s+GA4_ID\s*(?::\s*string\s*)?=\s*['\"]([^'\"]*)['\"]", f.read_text(errors='ignore'))
     return m.group(1).strip() if m else ''
 
-LANGS = ('fr', 'en', 'de', 'nl', 'it', 'es', 'pt', 'pl', 'fi', 'sv', 'nb', 'no', 'da', 'el', 'ar')
+LANGS = ('fr', 'en', 'de', 'nl', 'it', 'es', 'pt', 'pl', 'fi', 'sv', 'nb', 'no', 'da', 'el', 'ar', 'tr', 'id')
 
 
 def sortie_de(site: Path):

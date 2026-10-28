@@ -35,6 +35,11 @@ const FR_BEFORE = / (?=[:;?!»])/g;
 // anglaises de us-medicare-costs le 2026-10-24. On colle le signe dans ces langues.
 const PCT_COLLE = /^(en|it|pt|zh|ja|ko|th|ms|id)/i; // néerlandais : « 21 % » et « 21% » sont admis tous deux
 const PCT_ESPACE = /(\d)[ \u00a0\u202f](?:&nbsp;)?%|(\d)&nbsp;%/g;
+// Le turc place le signe avant le nombre, collé : « %93,4 », « %5 » (TDK). « 93,4 % », « 93,4% »
+// et « % 93,4 » deviennent « %93,4 » (tr-bayram, 2026-10-28).
+const PCT_AVANT = /^tr/i;
+const PCT_TURC = /(?<![%\d.,])(\d+(?:[.,]\d+)?)(?:[ \u00a0\u202f]|&nbsp;)?%/g;
+const PCT_TURC_ESPACE = /%(?:[ \u00a0\u202f]|&nbsp;)(?=\d)/g;
 const FR_AFTER = /« /g;
 // Le tiret cadratin « — » en incise est une signature d'ecriture automatique :
 // il abonde dans les textes produits par un modele et presque jamais sous la
@@ -83,8 +88,9 @@ function fix(html) {
   // Réécrire 106 appels à `toFixed()` site par site ne tenait pas ; la correction se
   // fait donc ici, sur le seul texte que le lecteur voit (rightetf.com, 2026-09-21).
   const { lang } = dotDecimals(html);
-  const virgule = lang && !/^(en|ja|ko|zh|th|he|hi|bn|ar|ms|id)|^de-CH|^it-CH|^es-(MX|US|PR|DO|GT|HN|NI|PA|SV)/i.test(lang);
+  const virgule = lang && !/^(en|ja|ko|zh|th|he|hi|bn|ar|ms)|^de-CH|^it-CH|^es-(MX|US|PR|DO|GT|HN|NI|PA|SV)/i.test(lang);
   const colle = PCT_COLLE.test(lang);
+  const avant = PCT_AVANT.test(lang);
   let count = 0, decimales = 0, cadratins = 0;
   // `application/ld+json` n'est pas du code : c'est le même texte que la page,
   // déclaré à Google. Le sauter faisait diverger la réponse déclarée de la
@@ -107,13 +113,16 @@ function fix(html) {
     const ldJson = dedans === 'ld' ? 1 : 0;
     const typographie = (texte) => {
       let t = texte.replace(EM_DASH, (m, off, str) => (cadratins++, remplaceCadratin(m, off, str)));
+      if (avant) t = t.replace(PCT_TURC, (_, n) => (count++, '%' + n)).replace(PCT_TURC_ESPACE, () => (count++, '%'));
       t = t.replace(UNIT, (_, d) => (count++, d + NB));
       if (colle) t = t.replace(PCT_ESPACE, (_, a, b) => (count++, (a || b) + '%'));
       if (fr) t = t.replace(FR_BEFORE, () => (count++, NB)).replace(FR_AFTER, () => (count++, '«' + NB));
       // Un numéro de version (« ZUGFeRD 1.0 », « XRechnung 3.0 ») garde son point : même règle que --check
       // (de-e-rechnung, 2026-10-25 : la correction mettait « ZUGFeRD 1,0 » alors que --check l'acceptait).
-      if (virgule) t = t.replace(DOT_DECIMAL, (m, off, str) => (estVersion(str.slice(Math.max(0, off - 30), off), str.slice(off + m.length, off + m.length + 8))
-        ? m : (decimales++, m.replace('.', ','))));
+      if (virgule) t = t.replace(DOT_DECIMAL, (m, off, str) => {
+        const av = str.slice(Math.max(0, off - 30), off), ap = str.slice(off + m.length, off + m.length + 8);
+        return estVersion(av, ap) || estHeure(lang, m, av, ap) ? m : (decimales++, m.replace('.', ','));
+      });
       return t;
     };
     // Dans un JSON-LD, seul le contenu des chaînes est du texte : corriger un
@@ -163,9 +172,18 @@ function estVersion(before, after) {
     && !/^(?:\s|&nbsp;|\u00a0)?(?:kWh|kW|km|kg|ch|€|%|L\b|m\b|min|h\b|s\b|ct|mm|cm|t\b|g\b|pouces|ans|mois|euros|fois|x\b)/.test(after);
 }
 
+// L'indonésien écrit l'heure avec un point : « pukul 07.30 WIB », « 00.00 » (PUEBI). Une heure n'est
+// pas une décimale : deux chiffres d'heure, deux de minutes, ou « pukul / jam » avant, « WIB / WITA / WIT »
+// après (id-kalender, 2026-10-28).
+function estHeure(lang, m, before, after) {
+  if (!/^id/i.test(lang) || !/^(?:[01]?\d|2[0-3])\.[0-5]\d$/.test(m)) return false;
+  return /^\d{2}\./.test(m) || /\b(?:pukul|jam)(?:\s|&nbsp;|\u00a0)?$/i.test(before)
+    || /^(?:\s|&nbsp;|\u00a0)?WIT/.test(after);
+}
+
 function dotDecimals(html) {
   const lang = (html.match(/<html[^>]*\blang="([^"]+)"/i) || [])[1] || '';
-  if (/^(en|ja|ko|zh|th|he|hi|bn|ar|ms|id)|^de-CH|^it-CH|^es-(MX|US|PR|DO|GT|HN|NI|PA|SV)/i.test(lang)) return { lang, hits: [] };   // point décimal : anglais, japonais, coréen, chinois, thaï, hébreu, hindi, bengali, arabe (chiffres latins), malais, indonésien, suisse allemand et italien (CLDR)
+  if (/^(en|ja|ko|zh|th|he|hi|bn|ar|ms)|^de-CH|^it-CH|^es-(MX|US|PR|DO|GT|HN|NI|PA|SV)/i.test(lang)) return { lang, hits: [] };   // point décimal : anglais, japonais, coréen, chinois, thaï, hébreu, hindi, bengali, arabe (chiffres latins), malais, suisse allemand et italien (CLDR)
   const text = texteVisible(html);
   // Numéro de version (« iDrive 8.5 », « Safety Sense 3.0 », « Blade 2.0 », « mise à jour
   // logicielle 3.5 », « un 2.0 turbo ») : nom propre ou « version / logicielle / un » juste avant,
@@ -174,7 +192,7 @@ function dotDecimals(html) {
   for (const m of text.matchAll(DOT_DECIMAL)) {
     const before = text.slice(Math.max(0, m.index - 30), m.index);
     const after = text.slice(m.index + m[0].length, m.index + m[0].length + 8);
-    if (!estVersion(before, after)) hits.push(m[0]);
+    if (!estVersion(before, after) && !estHeure(lang, m[0], before, after)) hits.push(m[0]);
   }
   return { lang, hits };
 }
@@ -200,6 +218,18 @@ function pourcentsEspaces(html) {
   const titres = [...html.matchAll(/\stitle="([^"]*)"/g)].map((m) => m[1]).join(' ');
   const texte = html.replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1>/gi, ' ').replace(/<[^>]+>/g, '').replace(/&nbsp;|&#160;/g, '\u00a0') + ' ' + titres;
   return [...texte.matchAll(/[^\n]{0,25}\d[ \u00a0\u202f]%/g)].map((m) => m[0].trim());
+}
+
+// Turc : signe placé après le nombre (« 93,4 % », « 93,4% ») ou séparé de lui (« % 93,4 »).
+function pourcentsTurcs(html) {
+  const lang = (html.match(/<html[^>]*\blang="([^"]+)"/i) || [])[1] || '';
+  if (!PCT_AVANT.test(lang)) return [];
+  const titres = [...html.matchAll(/\stitle="([^"]*)"/g)].map((m) => m[1]).join(' ');
+  // Balise remplacée par un saut de ligne : deux cellules voisines (« %93,4 » puis « %95,1 ») ne se
+  // collent pas en « 93,4%95,1 » ; le code d'intégration (« width="100%" ») n'est pas du texte.
+  const texte = html.replace(/<(script|style|pre|code|textarea|kbd)\b[^>]*>[\s\S]*?<\/\1>/gi, '\n')
+    .replace(/<[^>]+>/g, '\n').replace(/&nbsp;|&#160;/g, '\u00a0') + '\n' + titres;
+  return [...texte.matchAll(/[^\n]{0,25}(?:\d[ \u00a0\u202f]?%|%[ \u00a0\u202f]\d)/g)].map((m) => m[0].trim());
 }
 
 function wrongAccents(html) {
@@ -245,7 +275,7 @@ for await (const f of walk(dist)) {
   if (CHECK) {
     const { lang, hits } = dotDecimals(html);
     if (hits.length) { dots += hits.length; dotPages.push(`${f} : ${hits.slice(0, 3).join(', ')}`); }
-    const pct = pourcentsEspaces(html);
+    const pct = [...pourcentsEspaces(html), ...pourcentsTurcs(html)];
     if (pct.length) { pourcents += pct.length; pctPages.push(`${f} : ${[...new Set(pct)].slice(0, 3).join(' | ')}`); }
     const wrong = wrongAccents(html);
     if (wrong.length) { accents += wrong.length; accentPages.push(`${f} : accent faux ${[...new Set(wrong)].slice(0, 4).join(', ')}`); }
@@ -265,7 +295,7 @@ if (CHECK) tiretPages.forEach((l) => console.log('  ' + l));
 if (CHECK) {
   console.log(`typo-nbsp: ${dots} décimale(s) avec un point dans une langue à virgule`);
   dotPages.slice(0, 10).forEach((l) => console.log('  ' + l));
-  console.log(`typo-nbsp: ${pourcents} pourcentage(s) écrit(s) « 20 % » dans une langue qui écrit « 20% » (souvent dans un composant React : corriger la source)`);
+  console.log(`typo-nbsp: ${pourcents} pourcentage(s) écrit(s) mal placé(s) : « 20 % » là où la langue écrit « 20% », ou après le nombre en turc, qui écrit « %20 » (souvent dans un composant React : corriger la source)`);
   pctPages.slice(0, 10).forEach((l) => console.log('  ' + l));
   console.log(`typo-nbsp: ${accents} mot(s) français sans accent ou avec un accent faux`);
   accentPages.slice(0, 10).forEach((l) => console.log('  ' + l));
