@@ -3,4 +3,4 @@ Allow: /
 
 Disallow: /*?*
 
-Sitemap: https://tr-bayram.example/sitemap-index.xml
+Sitemap: https://bayramkacgun.com/sitemap-index.xml
