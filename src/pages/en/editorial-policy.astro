@@ -1,0 +1,27 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { AUTHOR_NAME, CONTACT_EMAIL, LAST_UPDATED, REVIEW_CYCLE_MONTHS } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { displayDate } from '../../lib/format';
+const lang = 'en';
+---
+<PageLayout title="Editorial policy: sources, testing and corrections" description="Where the feast dates, public holidays and prayer times come from, in what order we read sources, how the calculators are tested and what happens when we get something wrong." lang={lang} noindex={true} breadcrumbs={[{ label: 'Editorial policy' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Editorial policy and corrections</h1>
+    <p>Plan your leave around the wrong feast day, or break a fast a minute early, and the mistake is yours to bear. This page explains where every date and time comes from and what happens when something is wrong.</p>
+    <h2>Responsibility</h2><p>Content and calculators are the responsibility of {AUTHOR_NAME}. Contact: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+    <h2>Order of sources</h2>
+    <ol>
+      <li><strong>Laws as in force</strong>: Law 2429 on national and general holidays, Labour Code 4857, Civil Servants Law 657;</li>
+      <li><strong>Official publications</strong>: the Diyanet's lists of religious days and prayer-time parameters, and the Official Gazette for administrative leave;</li>
+      <li><strong>Computation</strong>: our own prayer-time computation, checked against the Diyanet's official calendar.</li>
+    </ol>
+    <p>Calendar sites, news articles and social media are not a source for a feast date or a holiday. Where nothing official exists yet, as for administrative leave in 2027, we write "not announced yet".</p>
+    <h2>Computed, not copied</h2><p>No date or time on this site is typed by hand. An engine reads feast dates from the Diyanet lists, derives holidays from the law and computes prayer times. Automated tests check holiday counts, feast dates, prayer times against the official samples and the leave planner on every change.</p>
+    <h2>Review cycle</h2><p>A full review at least every {REVIEW_CYCLE_MONTHS} months, when the Diyanet publishes a new year's list, and after any change to the law.</p>
+    <h2>Handling errors</h2>
+    <ol><li>Check against the source.</li><li>Fix the rule or data in the engine and add a test.</li><li>New reading date on every page affected.</li></ol>
+    <h2>Independence</h2><p>No money from travel companies, charities or authorities. No affiliate links, no donations, no paid content, no lead forms.</p>
+    <p>See also <a href={route('method', lang)}>Method</a>. Version of {displayDate(LAST_UPDATED, 'en-GB')}.</p>
+  </div>
+</PageLayout>

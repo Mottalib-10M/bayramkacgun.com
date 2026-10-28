@@ -1,0 +1,60 @@
+---
+/** Method: feast dates, Law 2429, holiday arithmetic, leave planner, prayer-time computation and Diyanet comparison. Every figure from the engine. */
+import PageLayout from '../../layouts/PageLayout.astro';
+import { route } from '../../i18n/routes';
+import { KIT as K } from '../../lib/kit';
+import { srcLink } from '../../lib/helpers';
+import { breadcrumbSchema, webPageSchema } from '../../lib/seo';
+import { displayDate, formatDecimal } from '../../lib/format';
+const lang = 'en';
+const path = route('method', lang);
+const title = 'Bayram dates and Ramadan times: our method and sources';
+const description = 'Feast dates from the Diyanet list, holiday lengths from Law 2429, an exact leave planner and Ramadan times with Diyanet parameters: our method and its limits.';
+const s = (k: string, t: string) => srcLink(k, lang, t);
+const d = (x: string) => displayDate(x, 'en-GB');
+const D = K.DOGRULAMA;
+const p = (x: number) => `${formatDecimal(x, 1, 'en')}%`;
+const ADI: Record<string, string> = { imsak: 'Imsak', gunes: 'Sunrise', ogle: 'Dhuhr', ikindi: 'Asr', aksam: 'Maghrib', yatsi: 'Isha' };
+const o10 = K.optimize(2027, 10), o10y = K.optimize(2027, 10, { yarim: true }), o10s = K.optimize(2027, 10, { hafta: '6' });
+const oz = K.yilOzeti(2027), oz6 = K.yilOzeti(2027, '6');
+const enKotu = Object.entries(D.ilBazinda).sort((a, b) => a[1] - b[1])[0];
+const IDARI = K.P.kopruIdariIzin as { taranan: string };
+const kb = K.bayram('kurban', 2027)!;
+---
+<PageLayout title={title} description={description} lang={lang} jsonLd={[webPageSchema({ name: 'Method', description, path, lang }), breadcrumbSchema([{ name: 'Home', path: route('home', lang) }, { name: 'Method', path }])]} breadcrumbs={[{ label: 'Method' }]}>
+  <article class="prose prose-slate max-w-none">
+    <h1>How dates, holidays and prayer times are computed</h1>
+    <p>Every calculator on this site runs in your browser. The province, year, leave days or wage you choose never leave your device. The calculations rest on three sources: the lists of religious days published by the Presidency of Religious Affairs (Diyanet), Law 2429 on national and general holidays together with labour and civil-service law, and the parameters the Diyanet has published for prayer times. Our last full reading: {d(K.P.retrieved_at)}.</p>
+
+    <h2>1. Feast, Ramadan and holy-night dates</h2>
+    <p>Ramazan and Kurban Bayramı, the first day of Ramadan, Laylat al-Qadr, the holy nights (kandil), the Hijri new year and Ashura are read from the Diyanet's yearly lists: <Fragment set:html={s('dg2026', '2026')} />, <Fragment set:html={s('dg2027', '2027')} />, <Fragment set:html={s('dg2028', '2028')} /> and <Fragment set:html={s('dg2029', '2029')} />. We do not compute these dates ourselves. The Diyanet fixes the start of Hijri months in advance by astronomical criteria: after the new moon, the crescent must be visible somewhere on Earth, at least 8 degrees from the sun and 5 degrees above the horizon (<Fragment set:html={s('hilal', 'Diyanet definitions')} />). The dates are therefore known years ahead and do not change later.</p>
+    <p>For holy nights and Laylat al-Qadr, the date in the list is the evening on which the night begins. Some countries wait for a naked-eye sighting, so a feast may start a day earlier or later there; the Diyanet's <Fragment set:html={s('hicri-fark', 'note on Hijri calendar differences')} /> explains why. Public holidays in Turkey always follow the Diyanet's date.</p>
+
+    <h2>2. Public holidays and half days</h2>
+    <p>The holidays and their length come from <Fragment set:html={s('k2429', 'Law 2429')} />: 1 January, 23 April, 1 May, 19 May, 15 July, 30 August and 29 October, with 28 October a holiday from 1 pm. Ramazan Bayramı lasts 3.5 days and Kurban Bayramı 4.5 days, both starting at 1 pm on the eve. When two holidays share a day, as on {d(kb.son)}, the fourth day of Kurban Bayramı and 19 May, the day is counted once.</p>
+    <p>A holiday on a weekend is not moved; the law has no such provision. In 2027 there are {oz.toplam} holiday days in all; for a Monday-to-Friday employee {oz.haftaIci} of them fall on weekdays, leaving {oz.isGunu} working days. On a six-day week, {oz6.haftaIci} holiday days fall on working days. Half days count as working days, since the morning is worked. Article 2/D adds a rule for public offices: when a holiday ends on a Friday evening, the following Saturday is also off. The six-day-week option of the calculators does not apply it.</p>
+
+    <h2>3. Feast breaks and the leave planner</h2>
+    <p>The feast-break calculator splits the calendar around the feast into blocks: free blocks of weekends and full holidays, and working blocks of working days. Taking a whole working block off joins the free blocks on both sides. The tool finds the longest uninterrupted break for your number of leave days and, on a tie, the option that uses fewer. Leave for the eve morning counts as a full day by default; you can count it as half a day.</p>
+    <p>The yearly planner applies the same logic to the whole year by dynamic programming over the sequence of working blocks: among all combinations, it picks the one that gives the most days off within the budget. The answer is exact. Each chain of leave must touch a holiday on a working day; leave that touches none is shown as "free to plan". Example: in 2027, 10 leave days give {o10.bos} days off on a five-day week, {o10y.bos} if eve mornings count as half days, {o10s.bos} on a six-day week. The planner does not apply Article 56 of the Labour Code: annual leave can be split only by agreement, and one part must be at least ten days.</p>
+
+    <h2>4. Administrative leave</h2>
+    <p>Administrative leave for public employees around a feast is not in the law; it is announced by a Presidential circular in the <Fragment set:html={s('resmigazete', 'Official Gazette')} />. We checked every issue from {IDARI.taranan.split('/').map(d).join(' to ')}, extra issues included, and found no administrative leave for 2027. The site therefore shows it as "not announced yet"; we add dates only once a decision is published.</p>
+
+    <h2>5. Holiday pay and annual leave</h2>
+    <p>Holiday pay follows <Fragment set:html={s('k4857', 'Labour Code 4857')} />: an employee who works on a public holiday receives an extra day's pay (Art. 47). Daily pay is monthly pay divided by 30, or hourly pay times 7.5 (Art. 49, and the 45-hour week of Art. 63). Figures are gross. Annual leave is 14 days for one to five years of service (five included), 20 days above five and under fifteen, 26 days from fifteen; at least 20 days for employees aged 18 or under or 50 or over; 4 more days for underground work (Art. 53). Civil servants get 20 days up to ten years of service (ten included) and 30 above, under <Fragment set:html={s('k657', 'Law 657')} /> (Art. 102).</p>
+
+    <h2>6. Imsak, iftar and prayer times</h2>
+    <p>Times are computed from the coordinates of the 81 provincial centres, taken from Wikidata (CC0). The sun's position is derived each day with Jean Meeus's abridged formulas. The parameters are the Diyanet's: imsak when the sun is 18 degrees below the horizon (<Fragment set:html={s('imsak', 'Diyanet: imsak')} />), isha at 17 degrees; safety margins (<Fragment set:html={s('temkin', 'temkin')} />) of 7 minutes before sunrise, 5 minutes for dhuhr, 4 for asr and 7 after sunset for maghrib, none for imsak and isha. Turkey has used UTC+3 all year since 2016. During Ramadan the dawn call is made at imsak (<Fragment set:html={s('sabah-ezani', 'Diyanet')} />). How latitude and longitude shift the times is described in the Diyanet's <Fragment set:html={s('kiyas', 'comparisons')} />.</p>
+
+    <h2>7. Comparison with the Diyanet calendar</h2>
+    <p>We read the <Fragment set:html={s('namazvakitleri', 'Diyanet\'s official prayer times')} /> for {D.iller} provinces from {d(D.gunler.ilk)} to {d(D.gunler.son)}, {D.gunler.adet} days, and compared them with our results: {D.karsilastirma.toLocaleString('en-GB')} comparisons. No time differs by more than {D.enFazlaFark} minute.</p>
+    <table><thead><tr><th>Prayer time</th><th>Same minute</th><th>During Ramadan 2027</th></tr></thead><tbody>
+      {Object.keys(ADI).map((k) => <tr><td>{ADI[k]}</td><td>{p(D.tam[k])}</td><td>{p(D.ramazan2027[k])}</td></tr>)}
+    </tbody></table>
+    <p>The remaining cases differ by exactly one minute, most likely because rounding goes the other way when the exact time falls near the middle of a minute, or because of slightly different reference points for a provincial centre. Agreement is lowest in {K.il(enKotu[0]).en} ({p(enKotu[1])}). We do not publish the Diyanet's times; we read them only to compare. The official calendar for 2028 and later is not out yet, so those timetables are computed only.</p>
+
+    <h2>8. Tests, limits and corrections</h2>
+    <p>Automated tests run before every change: holiday counts against the law, feast dates against the Diyanet list, prayer times against the comparison samples (one minute at most), and the planner against the rule that a larger budget never gives fewer days off. The calculators do not know your collective agreement, shift pattern or school holidays; times are for provincial centres and the official calendar prevails for worship. Report errors through the <a href={route('contact', lang)}>contact page</a>; how we correct is in the <a href={route('editorial', lang)}>editorial policy</a>.</p>
+  </article>
+</PageLayout>

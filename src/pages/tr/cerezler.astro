@@ -1,0 +1,32 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { CLARITY_ID, CONTACT_EMAIL, GA4_ID, LAST_UPDATED, SITE_NAMES } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+const lang = 'tr';
+const title = `Çerezler – ${SITE_NAMES[lang]}`;
+const description = GA4_ID ? 'Yalnızca Google Analytics ziyaret ölçüm çerezleri: adları, amaçları, en fazla 13 aylık ömürleri, sağlayıcı ve bu çerezlere nasıl itiraz edileceği.' : 'Site çerez kullanmaz: yazdıklarınız tarayıcınızda kalır ve cihazınızda hiçbir şey saklanmaz.';
+---
+{/* Elle yazıldı : scripts/gen-legal-pages.py Türkçeyi bilmiyor (2026-10-28). İngilizce sürümle aynı içerik. */}
+<PageLayout title={title} description={description} lang={lang} noindex={true} breadcrumbs={[{ label: 'Çerezler' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Çerezler</h1>
+    {GA4_ID ? (<>
+    <p>Site yalnızca Google Analytics ziyaret ölçüm çerezlerini kullanır: reklam çerezi ya da sosyal medya çerezi yoktur. İşlemenin ayrıntıları <a href={route('privacy', lang)}>gizlilik politikasında</a>.</p>
+    <h2>Kullanılan çerezler</h2>
+    <table><thead><tr><th>Ad</th><th>Sağlayıcı</th><th>Amaç</th><th>Ömür</th></tr></thead><tbody>
+    <tr><td><code>_ga</code></td><td>Google Analytics</td><td>Ziyaretçileri rastgele bir tanımlayıcıyla ayırt etmek</td><td>En fazla 13 ay (390 gün)</td></tr>
+    <tr><td><code>_ga_{GA4_ID.replace('G-', '')}</code></td><td>Google Analytics</td><td>Süren ziyaretin durumunu tutmak</td><td>En fazla 13 ay (390 gün)</td></tr>
+    </tbody></table>
+    <p>Bu süreler her ziyarette uzatılmaz; Google'ın varsayılanı 2 yıldır, site bunu kısaltır. Amaç: ziyaret ölçümü (görüntülenen sayfalar, yönlendiren sayfa, cihaz, yaklaşık ülke). IP adresi anonimleştirilir: Google Analytics 4 IP adresini kaydetmez ve saklamaz. Reklam ve reklam paylaşımı yoktur: reklam depolama, reklam kişiselleştirme ve Google sinyalleri kapalıdır.</p>
+    <p>Sağlayıcı: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, İrlanda. Veriler, AB–ABD Veri Gizliliği Çerçevesi ve Avrupa Komisyonunun standart sözleşme maddeleri kapsamında ABD'deki Google LLC'ye aktarılabilir. Google'da saklama süresi: 14 ay. Hukuki dayanak: yayıncının meşru menfaati (GDPR md. 6/1-f).</p>
+    <h2>Bu çerezlere itiraz</h2>
+    <p>Tarayıcı ayarlarınızdan çerezleri engelleyin ya da silin veya <a href="https://tools.google.com/dlpage/gaoptout" rel="nofollow noopener" target="_blank">Google Analytics devre dışı bırakma eklentisini</a> kurun. Site ve hesaplayıcılar aynı şekilde çalışır.</p>
+    </>) : (<>
+    <p>Site <strong>çerez kullanmaz</strong>. İşlemenin ayrıntıları <a href={route('privacy', lang)}>gizlilik politikasında</a>.</p>
+    </>)}
+    {CLARITY_ID && (<><h2>Microsoft Clarity, çerezsiz</h2><p>Sayfa kararlılığı çerezsiz modda Microsoft Clarity ile izlenir: Clarity çerez kullanmaz, her sayfa görüntülemesi tek kullanımlık bir tanımlayıcı alır, sayfa içeriği ve girdileriniz maskelenir. <code>clarity.ms</code> alan adını engellemek bunu durdurur.</p></>)}
+    <h2>Yazdıklarınız</h2>
+    <p>Hesaplar tarayıcınızda yapılır: girdiğiniz bilgiler hiçbir sunucuya gönderilmez ve sayfayı kapattığınızda kaybolur.</p>
+    <p>Sorular: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Son güncelleme: {LAST_UPDATED}.</p>
+  </div>
+</PageLayout>

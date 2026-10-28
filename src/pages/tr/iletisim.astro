@@ -1,0 +1,22 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { CONTACT_EMAIL, SITE_NAMES } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { contactPageSchema } from '../../lib/seo';
+const lang = 'tr';
+const description = 'Bir bayram tarihi, tatil süresi ya da vakit yanlış görünüyorsa veya bayram sayacını ya da imsakiyeyi sitenize eklemek istiyorsanız bize yazın.';
+---
+<PageLayout title={`İletişim ${SITE_NAMES[lang]}: hata bildirin, aracı ekleyin`} description={description} lang={lang} noindex={true} jsonLd={[contactPageSchema({ name: 'İletişim', description, path: route('contact', lang), lang })]} breadcrumbs={[{ label: 'İletişim' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>İletişim</h1>
+    <p>E-posta: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Genellikle bir hafta içinde yanıt veririz.</p>
+    <h2>Bir tarih ya da tatil süresi yanlış görünüyor</h2>
+    <p>Sayfayı, yılı ve mümkünse kaynağı yazın: Diyanet listesi, 2429 sayılı Kanunun maddesi ya da Resmî Gazete sayısı. Kaynakla karşılaştırır, birkaç gün içinde düzeltiriz.</p>
+    <h2>Bir vakit yanlış görünüyor</h2>
+    <p>İli, tarihi ve beklediğiniz saati yazın. Saatlerimiz il merkezi için hesaplanır ve resmi takvimden bir dakika farklı olabilir; ilçelerde birkaç dakika fark olabilir.</p>
+    <h2>Aracı sitenize ekleyin</h2>
+    <p>Siteler, haber odaları ve insan kaynakları ekipleri bayram sayacını ve imsakiyeyi ücretsiz ekleyebilir: <a href={route('widget', lang)}>Sitenize ekleyin</a>.</p>
+    <h2>Yapmadıklarımız</h2>
+    <p>Hukuki ya da dini danışmanlık vermeyiz, bağış ya da kurban hissesi toplamayız, tatil rezervasyonu yapmayız.</p>
+  </div>
+</PageLayout>

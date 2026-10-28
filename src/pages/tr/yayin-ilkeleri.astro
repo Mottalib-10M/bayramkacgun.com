@@ -1,0 +1,27 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { AUTHOR_NAME, CONTACT_EMAIL, LAST_UPDATED, REVIEW_CYCLE_MONTHS } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { displayDate } from '../../lib/format';
+const lang = 'tr';
+---
+<PageLayout title="Yayın ilkeleri: kaynaklar, testler ve düzeltmeler" description="Bayram tarihleri, resmi tatiller ve vakitler nereden geliyor, kaynakları hangi sırayla okuyoruz, hesaplayıcılar nasıl test ediliyor ve bir hata olduğunda ne yapıyoruz." lang={lang} noindex={true} breadcrumbs={[{ label: 'Yayın ilkeleri' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Yayın ilkeleri ve düzeltmeler</h1>
+    <p>İzninizi yanlış bir bayram gününe göre planlarsanız ya da orucu bir dakika erken açarsanız, hatanın bedelini siz ödersiniz. Bu sayfa her tarihin ve saatin nereden geldiğini, bir hata olduğunda ne yaptığımızı anlatır.</p>
+    <h2>Sorumluluk</h2><p>İçerik ve hesaplayıcılardan {AUTHOR_NAME} sorumludur. İletişim: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+    <h2>Kaynakların sırası</h2>
+    <ol>
+      <li><strong>Yürürlükteki kanunlar</strong>: 2429 sayılı Ulusal Bayram ve Genel Tatiller Hakkında Kanun, 4857 sayılı İş Kanunu, 657 sayılı Devlet Memurları Kanunu;</li>
+      <li><strong>Resmi yayınlar</strong>: Diyanet İşleri Başkanlığının dini günler listeleri ve vakit ölçüleri, idari izin için Resmî Gazete;</li>
+      <li><strong>Hesap</strong>: Diyanet'in resmi takvimiyle karşılaştırılan kendi vakit hesabımız.</li>
+    </ol>
+    <p>Takvim siteleri, haberler ve sosyal medya bir bayram tarihi ya da tatil için kaynak değildir. Henüz resmi bir şey yoksa, örneğin 2027 idari izni gibi, “henüz açıklanmadı” yazarız.</p>
+    <h2>Kopya değil, hesap</h2><p>Bu sitede hiçbir tarih ya da saat elle yazılmaz. Bir motor bayram tarihlerini Diyanet listelerinden okur, tatilleri kanundan çıkarır ve vakitleri hesaplar. Her değişiklikte otomatik testler tatil sayılarını, bayram tarihlerini, vakitleri resmi örneklere karşı ve izin planlayıcıyı denetler.</p>
+    <h2>Gözden geçirme</h2><p>En az {REVIEW_CYCLE_MONTHS} ayda bir tam gözden geçirme; Diyanet yeni yılın listesini yayımladığında ve kanunda bir değişiklik olduğunda ayrıca.</p>
+    <h2>Hata olduğunda</h2>
+    <ol><li>Kaynakla karşılaştırırız.</li><li>Motordaki kuralı ya da veriyi düzeltir, bir test ekleriz.</li><li>Etkilenen her sayfada okuma tarihi yenilenir.</li></ol>
+    <h2>Bağımsızlık</h2><p>Tur şirketlerinden, derneklerden ya da kurumlardan para almayız. Ortaklık bağlantısı, bağış, ücretli içerik ya da iletişim formu yoktur.</p>
+    <p>Bkz. <a href={route('method', lang)}>Yöntem</a>. Sürüm: {displayDate(LAST_UPDATED, 'tr-TR')}.</p>
+  </div>
+</PageLayout>

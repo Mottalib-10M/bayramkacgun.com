@@ -1,0 +1,49 @@
+{
+ "_lisezmoi": "Paramètres datés du site. Chaque source a été relue le 2026-10-28. Les dates des bayrams viennent de src/data/dini-gunler.json (listes du Diyanet), les tatiller sont calculés par src/lib/engine/takvim.ts selon la loi 2429, les heures par src/lib/engine/vakit.ts (validées contre le Diyanet : src/data/dogrulama.json).",
+ "year": 2026,
+ "retrieved_at": "2026-10-28",
+ "valid_from": "2026-01-01",
+ "valid_to": "2028-12-31",
+ "yillar": [2026, 2027, 2028],
+ "izin": {
+  "_kaynak": "4857 sayılı İş Kanunu md. 53 ve 56 ; 657 sayılı Devlet Memurları Kanunu md. 102 ve 103",
+  "isci": [{ "kidemMin": 1, "kidemMax": 5, "gun": 14 }, { "kidemMin": 5, "kidemMax": 15, "gun": 20 }, { "kidemMin": 15, "kidemMax": 99, "gun": 26 }],
+  "isciGencYasli": 20,
+  "yeraltiEk": 4,
+  "bolumEnAz": 10,
+  "memur": [{ "kidemMin": 1, "kidemMax": 10, "gun": 20 }, { "kidemMin": 10, "kidemMax": 99, "gun": 30 }],
+  "yolIzniIsci": 4
+ },
+ "ucret": {
+  "_kaynak": "4857 sayılı İş Kanunu md. 47 ve 49 ; md. 63 (haftada en çok 45 saat)",
+  "aylikGun": 30,
+  "saatlikKat": 7.5,
+  "haftalikSaat": 45
+ },
+ "kopruIdariIzin": {
+  "_lisezmoi": "Kamu personeline bayram öncesi ya da sonrası verilen idari izin Cumhurbaşkanlığınca ayrıca duyurulur. Resmî Gazete'nin 1 Ocak–27 Ekim 2026 sayıları (mükerrerler dahil) tarandı ; 2027 için bir idari izin metni yok.",
+  "2027": "aciklanmadi",
+  "taranan": "2026-01-01/2026-10-27"
+ },
+ "sources": {
+  "k2429": { "url": "https://www.mevzuat.gov.tr/mevzuatmetin/1.5.2429.pdf", "label": { "tr": "2429 sayılı Ulusal Bayram ve Genel Tatiller Hakkında Kanun (mevzuat.gov.tr)", "en": "Law No. 2429 on National Holidays and General Days Off (mevzuat.gov.tr)" } },
+  "k4857": { "url": "https://www.mevzuat.gov.tr/mevzuatmetin/1.5.4857.pdf", "label": { "tr": "4857 sayılı İş Kanunu, md. 44, 47, 49, 53, 56 (mevzuat.gov.tr)", "en": "Labour Act No. 4857, arts. 44, 47, 49, 53, 56 (mevzuat.gov.tr)" } },
+  "k657": { "url": "https://www.mevzuat.gov.tr/mevzuatmetin/1.5.657.pdf", "label": { "tr": "657 sayılı Devlet Memurları Kanunu, md. 102 ve 103 (mevzuat.gov.tr)", "en": "Civil Servants Act No. 657, arts. 102 and 103 (mevzuat.gov.tr)" } },
+  "dg2026": { "url": "https://vakithesaplama.diyanet.gov.tr/dinigunler.php?yil=2026", "label": { "tr": "Diyanet İşleri Başkanlığı: 2026 Yılı Dini Günler", "en": "Presidency of Religious Affairs (Diyanet): religious days 2026" } },
+  "dg2027": { "url": "https://vakithesaplama.diyanet.gov.tr/icerik.php?icerik=154", "label": { "tr": "Diyanet İşleri Başkanlığı: 2027 Yılı Dini Günler", "en": "Presidency of Religious Affairs (Diyanet): religious days 2027" } },
+  "dg2028": { "url": "https://vakithesaplama.diyanet.gov.tr/icerik.php?icerik=185", "label": { "tr": "Diyanet İşleri Başkanlığı: 2028 Yılı Dini Günler", "en": "Presidency of Religious Affairs (Diyanet): religious days 2028" } },
+  "dg2029": { "url": "https://vakithesaplama.diyanet.gov.tr/icerik.php?icerik=186", "label": { "tr": "Diyanet İşleri Başkanlığı: 2029 Yılı Dini Günler (2030–2035 listeleri aynı bölümde)", "en": "Diyanet: religious days 2029 (the 2030–2035 lists sit in the same section)" } },
+  "rt2026": { "url": "https://vakithesaplama.diyanet.gov.tr/icerik.php?icerik=158", "label": { "tr": "Diyanet İşleri Başkanlığı: 2026 Yılı Resmi Tatiller", "en": "Diyanet: public holidays 2026" } },
+  "rt2027": { "url": "https://vakithesaplama.diyanet.gov.tr/icerik.php?icerik=159", "label": { "tr": "Diyanet İşleri Başkanlığı: 2027 Yılı Resmi Tatiller", "en": "Diyanet: public holidays 2027" } },
+  "rt2028": { "url": "https://vakithesaplama.diyanet.gov.tr/icerik.php?icerik=193", "label": { "tr": "Diyanet İşleri Başkanlığı: 2028 Yılı Resmi Tatiller", "en": "Diyanet: public holidays 2028" } },
+  "temkin": { "url": "https://vakithesaplama.diyanet.gov.tr/temkin.php", "label": { "tr": "Diyanet: İbadet vakitlerinde temkin (güneş 7 dk, öğle 5 dk, ikindi 4 dk; imsak ve yatsıda temkin yok)", "en": "Diyanet: safety margins (temkin) in prayer times" } },
+  "imsak": { "url": "https://vakithesaplama.diyanet.gov.tr/imsak.php", "label": { "tr": "Diyanet: İmsak vakti (fecr-i sâdık)", "en": "Diyanet: the imsak time (true dawn)" } },
+  "sabah-ezani": { "url": "https://vakithesaplama.diyanet.gov.tr/sabah_ezani.php", "label": { "tr": "Diyanet: Ramazan'da sabah ezanı neden imsakta okunur", "en": "Diyanet: why the dawn call to prayer is read at imsak in Ramadan" } },
+  "hilal": { "url": "https://vakithesaplama.diyanet.gov.tr/tanim.php", "label": { "tr": "Diyanet: Tanımlar (içtima, rü'yet-i hilal: 8° açılma, 5° yükseklik)", "en": "Diyanet: definitions (conjunction, crescent visibility: 8° elongation, 5° altitude)" } },
+  "hicri-fark": { "url": "https://vakithesaplama.diyanet.gov.tr/hicri_farki.php", "label": { "tr": "Diyanet: Hicri takvim farkı (bayramın ülkeden ülkeye neden değiştiği)", "en": "Diyanet: why Hijri month starts differ between countries" } },
+  "kiyas": { "url": "https://vakithesaplama.diyanet.gov.tr/vakit_kiyaslamalari.php", "label": { "tr": "Diyanet: Vakit kıyaslamaları (enlem ve boylamın vakitlere etkisi)", "en": "Diyanet: how latitude and longitude change prayer times" } },
+  "namazvakitleri": { "url": "https://namazvakitleri.diyanet.gov.tr/tr-TR", "label": { "tr": "Diyanet İşleri Başkanlığı: Namaz vakitleri (resmi takvim)", "en": "Diyanet: official prayer time calendar" } },
+  "resmigazete": { "url": "https://www.resmigazete.gov.tr/", "label": { "tr": "Resmî Gazete", "en": "Official Gazette of the Republic of Türkiye" } },
+  "teravih": { "url": "https://islamansiklopedisi.org.tr/teravih", "label": { "tr": "TDV İslâm Ansiklopedisi: Terâvih", "en": "TDV Encyclopedia of Islam: Tarawih" } }
+ }
+}

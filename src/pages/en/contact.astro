@@ -1,0 +1,22 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { CONTACT_EMAIL, SITE_NAMES } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { contactPageSchema } from '../../lib/seo';
+const lang = 'en';
+const description = 'Write to us if a feast date, a holiday length or a prayer time looks wrong, or if you would like to embed the bayram countdown or the Ramadan timetable on your website.';
+---
+<PageLayout title={`Contact ${SITE_NAMES[lang]}: report an error, embed a tool`} description={description} lang={lang} noindex={true} jsonLd={[contactPageSchema({ name: 'Contact', description, path: route('contact', lang), lang })]} breadcrumbs={[{ label: 'Contact' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Contact</h1>
+    <p>Email: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. We usually reply within a week.</p>
+    <h2>A date or holiday length looks wrong</h2>
+    <p>Tell us the page, the year and, if you can, the source: the Diyanet list, the article of Law 2429 or the Official Gazette issue. We check against the source and correct within a few days.</p>
+    <h2>A prayer time looks wrong</h2>
+    <p>Give the province, the date and the time you expected. Our times are computed for provincial centres and can differ by one minute from the official calendar; districts can differ by a few minutes.</p>
+    <h2>Embed a tool</h2>
+    <p>Websites, newsrooms and HR teams can embed the bayram countdown and the Ramadan timetable for free: <a href={route('widget', lang)}>Embed</a>.</p>
+    <h2>What we do not do</h2>
+    <p>No legal or religious advice, no donations or sacrifice shares, no travel bookings.</p>
+  </div>
+</PageLayout>

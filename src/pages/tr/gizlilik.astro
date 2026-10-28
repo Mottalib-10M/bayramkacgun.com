@@ -1,0 +1,51 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { CLARITY_ID, CONTACT_EMAIL, GA4_ID, LAST_UPDATED, LEGAL, SITE_NAMES, SITE_URL } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+const lang = 'tr';
+const title = `Gizlilik politikası – ${SITE_NAMES[lang]}`;
+const description = GA4_ID ? 'Reklamsız, çerezli Google Analytics ziyaret ölçümü; girdiler tarayıcınızda; barındırıcı kayıtları; haklarınız ve başvurabileceğiniz denetim makamı.' : 'Girdiler tarayıcınızda, çerez yok, barındırıcı kayıtları: sitenin arkasındaki veri işleme, haklarınız ve başvurabileceğiniz denetim makamı.';
+---
+{/* Elle yazıldı : scripts/gen-legal-pages.py Türkçeyi bilmiyor (2026-10-28). İngilizce sürümle aynı içerik. */}
+<PageLayout title={title} description={description} lang={lang} noindex={true} breadcrumbs={[{ label: 'Gizlilik' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Gizlilik politikası</h1>
+    <p>Bu sayfa, {SITE_URL} kullanımına bağlı kişisel veri işlemeyi (AB) 2016/679 sayılı Tüzüğün (GDPR) 12-14. maddeleri uyarınca açıklar. Türkiye'den ziyaret edenler 6698 sayılı Kişisel Verilerin Korunması Kanunundaki haklarını da aşağıdaki adres üzerinden kullanabilir.</p>
+    <h2>1. Veri sorumlusu</h2>
+    <LegalIdentity lang={lang} />
+    <p>Verilerinizle ilgili her soru için: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. GDPR md. 37'nin koşulları oluşmadığı için veri koruma görevlisi atanmamıştır.</p>
+    <h2>2. Yazdıklarınız tarayıcınızda kalır</h2>
+    <p>Sitedeki hesaplar tarayıcınızda yapılır. Seçtiğiniz il, yıl, izin günü ya da ücret <strong>hiçbir sunucuya gönderilmez</strong>, hiçbir yerde saklanmaz ve hiçbir tanımlayıcıya bağlanmaz. Site hesap, ad ya da e-posta adresi istemez. Paylaşım bağlantısı girdilerinizi sayfa adresinde taşır: yalnızca seçtiğiniz kişilere gönderin.</p>
+    <h2>3. Yapılan işlemler</h2>
+    <h3>Barındırıcının erişim kayıtları</h3>
+    <p>Barındırıcı her istek için IP adresini, tarih ve saati, istenen sayfayı, tarayıcıyı ve yönlendiren sayfayı kaydeder. Amaç: hizmetin güvenliği ve arıza tespiti. Hukuki dayanak: yayıncının meşru menfaati (GDPR md. 6/1-f). Saklama süresi: barındırıcının kendi politikasına göre.</p>
+    {GA4_ID ? (<>
+    <h3>Google Analytics ile ziyaret ölçümü</h3>
+    <p>Site, ziyaretleri saymak ve hangi sayfaların yararlı olduğunu görmek için Google Analytics 4 kullanır: görüntülenen sayfalar, yönlendiren sayfa, ziyaret süresi, cihaz ve tarayıcı türü, yaklaşık ülke ve şehir. Bunun için Google Analytics cihazınıza iki çerez yerleştirir: ziyaretçileri rastgele bir tanımlayıcıyla ayırt eden <code>_ga</code> ve ziyaretin durumunu tutan <code>_ga_{GA4_ID.replace('G-', '')}</code>. Ömürleri en fazla 13 ay (390 gün) olarak ayarlanmıştır ve her ziyarette uzatılmaz; Google'ın varsayılanı 2 yıldır.</p>
+    <p>IP adresi anonimleştirilir: Google Analytics 4 onu kaydetmez ve saklamaz, yalnızca toplama anında yaklaşık ülke ve şehri çıkarmak için kullanır. Google Analytics'e gönderilen sayfa adresinden parametreler çıkarılır; böylece paylaşım bağlantısındaki girdiler gönderilmez. Sitede reklam yoktur: reklam depolama, reklam kullanıcı verisi, reklam kişiselleştirme ve Google sinyalleri kapalıdır; ölçüm verileri hiçbir reklamverenle paylaşılmaz.</p>
+    <p>Amaç: ziyaret ölçümü. Hukuki dayanak: yayıncının meşru menfaati (GDPR md. 6/1-f). Sağlayıcı: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, İrlanda. Google'da saklama: ziyaret ve tanımlayıcı düzeyindeki veriler için 14 ay, ardından silme; yalnızca anonim toplamlar kalır.</p>
+    </>) : (<>
+    <h3>Ziyaret ölçümü yok</h3>
+    <p>Site çerez kullanmaz ve hiçbir ölçüm ya da reklam aracı kullanmaz.</p>
+    </>)}
+    {CLARITY_ID && (<>
+    <h3>Microsoft Clarity ile çerezsiz teknik kararlılık izlemesi</h3>
+    <p>Hataları, yavaş sayfaları ve çalışmayan düğmeleri görmek için site çerezsiz modda Microsoft Clarity kullanır: Clarity çerez yerleştirmez, her sayfa görüntülemesi kendi tanımlayıcısını alır, sayfa metni ve girdileriniz maskelenir. Clarity sayfa yapısını, tıklamaları, kaydırmayı, cihaz türünü, yükleme sürelerini ve hataları alır. Amaç: sitenin kararlılığı. Hukuki dayanak: yayıncının meşru menfaati (GDPR md. 6/1-f). Sağlayıcı: Microsoft Ireland Operations Limited, One Microsoft Place, South County Business Park, Leopardstown, Dublin 18, İrlanda. Saklama: sayfa kayıtları için 30 gün, toplu veriler için en fazla 13 ay.</p>
+    </>)}
+    <h3>Bize gönderdiğiniz mesajlar</h3>
+    <p>İletişim adresine yazarsanız e-posta adresiniz ve mesajınız, yanıt vermek ve gerekirse bir hatayı düzeltmek için gereken süre boyunca saklanır, en geç son yazışmadan üç yıl sonra silinir. Hukuki dayanak: yayıncının meşru menfaati (GDPR md. 6/1-f).</p>
+    <h2>4. Alıcılar</h2>
+    <p>Hiçbir veri satılmaz, kiralanmaz ya da devredilmez. Erişim, GDPR md. 28 kapsamında veri işleyen olarak barındırıcıyla{GA4_ID && ', Google Analytics için Google Ireland Limited ile'}{CLARITY_ID && ', Clarity için Microsoft Ireland Operations Limited ile'} sınırlıdır. Sitede hiçbir reklam ağı çalışmaz.</p>
+    <h2>5. Avrupa Birliği dışına aktarım</h2>
+    <p>Barındırıcı kayıtları ABD'de işlenebilir.{GA4_ID && ' Google Analytics verileri ABD\'deki Google LLC\'ye aktarılabilir.'}{CLARITY_ID && ' Clarity verileri ABD\'deki Microsoft Corporation\'a aktarılabilir.'} Bu aktarımlar AB–ABD Veri Gizliliği Çerçevesine ve Avrupa Komisyonunun standart sözleşme maddelerine dayanır.</p>
+    <h2>6. Haklarınız</h2>
+    <p>GDPR md. 15-22'de düzenlenen erişim, düzeltme, silme, kısıtlama, itiraz ve taşınabilirlik haklarına sahipsiniz. <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> adresine yazın; bir ay içinde yanıt veririz. Kullanıcı hesabı olmadığından genellikle sizi tanımlayan bir veri tutmayız ve bunu size bildiririz.</p>
+    {GA4_ID && (<p>Bize yazmadan ziyaret ölçümüne itiraz etmek için: tarayıcı ayarlarınızdan çerezleri engelleyin ya da silin veya <a href="https://tools.google.com/dlpage/gaoptout" rel="nofollow noopener" target="_blank">Google Analytics devre dışı bırakma eklentisini</a> kurun. Site aynı şekilde çalışır.</p>)}
+    {CLARITY_ID && (<p>Kararlılık izlemesi için: tarayıcınızda ya da bir içerik engelleyiciyle <code>clarity.ms</code> alan adını engelleyin.</p>)}
+    <p>Denetim makamına şikâyette bulunabilirsiniz: {LEGAL.supervisoryAuthority} (<a href={LEGAL.supervisoryAuthorityUrl} rel="nofollow noopener" target="_blank">{LEGAL.supervisoryAuthorityUrl}</a>).</p>
+    <h2>7. Otomatik karar yok</h2>
+    <p>Bir hesap sonucu, sizin isteğinizle, sizin girdilerinizden, tarayıcınızda üretilen bir tahmindir. Hukuki etkisi yoktur ve GDPR md. 22 anlamında otomatik karar değildir. Profil çıkarma yapılmaz.</p>
+    <p>Bkz. <a href={route('cookies', lang)}>çerezler</a> sayfası. Son güncelleme: {LAST_UPDATED}.</p>
+  </div>
+</PageLayout>

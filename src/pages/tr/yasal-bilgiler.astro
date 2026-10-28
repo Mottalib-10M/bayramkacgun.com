@@ -1,0 +1,33 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { AUTHOR_NAME, CLARITY_ID, CONTACT_EMAIL, GA4_ID, LAST_UPDATED, LEGAL, SITE_NAMES, SITE_URL } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+const lang = 'tr';
+const title = `Yasal bilgiler – ${SITE_NAMES[lang]}`;
+const description = 'Yayıncı, içerik sorumlusu, barındırma, tavsiye niteliği taşımama, fikri mülkiyet, kişisel veriler ve uygulanacak hukuk: bu sitenin yasal bilgileri.';
+---
+{/* Elle yazıldı : scripts/gen-legal-pages.py Türkçeyi bilmiyor (2026-10-28). İngilizce sürümle aynı içerik. */}
+<PageLayout title={title} description={description} lang={lang} noindex={true} breadcrumbs={[{ label: 'Yasal bilgiler' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Yasal bilgiler</h1>
+    <p>{SITE_URL} adresindeki sitenin yayıncısı ve kullanım koşulları hakkında bilgiler.</p>
+    <h2>Yayıncı</h2>
+    <LegalIdentity lang={lang} />
+    <p>İçerik sorumlusu: {AUTHOR_NAME}; {SITE_URL} üzerinde yayımlanan içerikten sorumludur.</p>
+    <h2>Barındırma</h2>
+    <LegalIdentity mode="hosting" lang={lang} />
+    <h2>Sitenin amacı ve tavsiye niteliği taşımaması</h2>
+    <p>Site bilgi amaçlı ücretsiz hesaplayıcılar ve rehberler sunar. Sonuçlar, her sayfada belirtilen resmi kurallara ve listelere dayanan hesaplardır; kişisel danışmanlık, bir idari karar ya da herhangi bir kurumun taahhüdü değildir. Yöntem ve sınırlar: <a href={route('method', lang)}>yöntem</a>.</p>
+    <h2>Sorumluluk</h2>
+    <p>Parametreler güncellenir ve hesaplar referans örneklerle denetlenir; yine de hata bulunmadığı garanti edilmez. Yayıncı, yalnızca bir hesaba dayanılarak verilen kararlardan sorumlu tutulamaz. İbadet vakitlerinde Diyanet İşleri Başkanlığının resmi takvimi esastır. Hataları <a href={route('contact', lang)}>iletişim sayfası</a> üzerinden bildirebilirsiniz.</p>
+    <h2>Fikri mülkiyet</h2>
+    <p>Metinler, tasarım ve kod yayıncıya aittir; özgün sayfaya bağlantı verilerek yapılan kısa alıntılar memnuniyetle karşılanır.</p>
+    <h2>Kişisel veriler ve çerezler</h2>
+    {GA4_ID ? (<p>Hesaplayıcılara yazdıklarınız tarayıcınızda kalır. Site, reklam amacı olmadan Google Analytics ziyaret ölçüm çerezleri kullanır (<code>_ga</code>, <code>_ga_{GA4_ID.replace('G-', '')}</code>, en fazla 13 ay){CLARITY_ID && '; sayfa kararlılığı çerezsiz Microsoft Clarity ile izlenir'}. Ayrıntılar, hukuki dayanak ve itiraz yolu: <a href={route('privacy', lang)}>gizlilik politikası</a> ve <a href={route('cookies', lang)}>çerezler</a> sayfası.</p>) : (<p>Hesaplayıcılara yazdıklarınız tarayıcınızda kalır ve site çerez kullanmaz{CLARITY_ID && '; sayfa kararlılığı çerezsiz Microsoft Clarity ile anonim olarak izlenir'}. Bkz. <a href={route('privacy', lang)}>gizlilik politikası</a> ve <a href={route('cookies', lang)}>çerezler</a> sayfası.</p>)}
+    <h2>İçerik bildirimi</h2>
+    <p>Hukuka aykırı içerikleri sayfa adresi ve gerekçesiyle birlikte <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> adresine bildirin.</p>
+    <h2>Uygulanacak hukuk</h2>
+    <p>Fransız hukuku uygulanır. Dostane çözüm sağlanamazsa {LEGAL.jurisdiction} mahkemeleri yetkilidir. Son güncelleme: {LAST_UPDATED}.</p>
+  </div>
+</PageLayout>

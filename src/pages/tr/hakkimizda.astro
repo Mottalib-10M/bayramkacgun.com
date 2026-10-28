@@ -1,0 +1,67 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { route } from '../../i18n/routes';
+import { AUTHOR_NAME, AUTHOR_DESC, CONTACT_EMAIL, SITE_NAMES } from '../../data/site-config';
+import { srcLink } from '../../lib/helpers';
+import { KIT as K } from '../../lib/kit';
+import { displayDate } from '../../lib/format';
+import { profilePageSchema, breadcrumbSchema, faqSchema } from '../../lib/seo';
+const lang = 'tr';
+const path = route('about', lang);
+const title = 'Bayram takvimini kim yayımlıyor? Hakkımızda ve kaynaklar';
+const description = 'Bayram tarihleri, resmi tatiller ve imsakiye sitesini Radif Partners yayımlıyor: bağımsız, bağış toplamıyor. Tüm veriler Diyanet\'ten ve kanundan geliyor.';
+const s = (k: string, t: string) => srcLink(k, lang, t);
+const D = K.DOGRULAMA;
+const kb = K.bayram('kurban', 2027)!;
+const faqs = [
+  { q: 'Bu siteyi kim yayımlıyor?', a: 'Site, kamuya açık kurallardan hesaplama araçları geliştiren bağımsız bir şirket olan Radif Partners tarafından yayımlanır. Radif Partners bir kamu kurumu, Diyanet\'in bir birimi, bir hukuk bürosu ya da bir dernek değildir ve hiçbir kurumla bağı yoktur. Yayıncının unvanı, adresi ve iletişim bilgileri bu sayfada ve yasal bilgiler sayfasında yer alır.' },
+  { q: 'Site bağış topluyor ya da kurban satıyor mu?', a: 'Hayır. Site bağış toplamaz, kurban hissesi satmaz, tatil paketi, kredi ya da sigorta önermez ve ortaklık bağlantısı içermez. Ziyaretçiden form, telefon numarası ya da e-posta adresi istemez. Bayram ve Ramazan sayfalarında yalnızca tarihler, tatil süreleri, izin hesapları ve vakitler bulunur; her biri kaynağıyla birlikte gösterilir.' },
+  { q: 'İmsak ve iftar saatlerine güvenebilir miyim?', a: `Saatler Diyanet'in açıkladığı ölçülerle hesaplanır ve resmi takvimle ${D.karsilastirma.toLocaleString('tr-TR')} vakit üzerinden karşılaştırılmıştır; hiçbir vakitte fark bir dakikayı geçmemiştir. Yine de il merkezine göre hesaplandıkları için ilçenizde birkaç dakika fark olabilir. İbadet için Diyanet'in resmi takvimini esas alın, siteyi planlama ve karşılaştırma için kullanın.` },
+  { q: 'Bir hata bulursam ne olur?', a: 'İletişim adresine sayfanın adresini, ili ve tarihi, mümkünse dayandığınız kaynağı yazın. Bildirimi kaynakla karşılaştırırız; hata doğrulanırsa motordaki kuralı ya da veriyi düzeltir, aynı hatanın tekrar etmemesi için bir test ekler ve etkilenen her sayfanın okuma tarihini yenileriz. Düzeltme genellikle birkaç gün içinde yayına çıkar.' },
+];
+---
+<PageLayout title={title} description={description} lang={lang} jsonLd={[profilePageSchema({ path, lang }), faqSchema(faqs, lang), breadcrumbSchema([{ name: 'Ana sayfa', path: route('home', lang) }, { name: 'Hakkımızda', path }])]} breadcrumbs={[{ label: 'Hakkımızda' }]}>
+  <article class="prose prose-slate max-w-none">
+    <h1>{SITE_NAMES[lang]} hakkında</h1>
+    <p>{AUTHOR_DESC.tr}</p>
+
+    <h2>Bu site neden var?</h2>
+    <p>“Bayram ne zaman?” sorusu Türkiye'de her yıl milyonlarca kez aranır. Cevabı veren sayfaların çoğu ya yalnızca tarihi yazar ya da tarihi bir tatil, kurban bağışı veya kredi teklifinin önüne koyar. Oysa insanların asıl sorusu çoğu zaman daha somuttur: bayram kaç gün sürecek, arefe yarım gün mü, hafta sonuna denk gelirse tatil uzar mı, kaç gün izin alırsam kaç gün evde kalırım, Ramazanın ilk iftarı benim ilimde saat kaçta, idari izin verildi mi? Bu site, bu soruların her birine ilk ekranda, hesaplanmış bir cevapla yanıt vermek için kuruldu. Cevap bir tahmin ya da başka bir siteden kopyalanmış bir liste değildir: tarihler Diyanet'in yayımladığı listeden, tatil süreleri kanunun kendisinden okunur, izin ve tatil hesapları ise sizin seçtiğiniz yıl, çalışma haftası ve izin günüyle tarayıcınızda yapılır. Bilinmeyen bir şey olduğunda, örneğin henüz açıklanmamış bir idari izinde, bunu açıkça yazarız.</p>
+    <p>Her sayfada bir hesaplayıcı vardır: bayrama kalan süreyi sayan bir sayaç, izin günlerini bayramın yanına yerleştiren bir planlayıcı, 81 il için gün gün imsakiye, resmi tatilde çalışma ücreti ya da yıllık izin hakkı. Metinler hesaplayıcının sonucunu açıklar; sonucun yerine geçmez. Tarihler elle yazılmaz, bir hesap motorundan gelir. Bu sayede 2027'de Kurban Bayramının {displayDate(kb.ilk, 'tr-TR')} günü başladığı bilgisi ile o bayram için hesaplanan tatil süresi, sitedeki her sayfada aynıdır.</p>
+
+    <h2>Kim yayımlıyor?</h2>
+    <p>Sitenin yayıncısı {AUTHOR_NAME}'tır. {AUTHOR_NAME}, kamuya açık kurallardan ve verilerden hesaplama araçları geliştiren bir şirkettir. Bir kamu kurumu, Diyanet'in bir birimi, bir hukuk bürosu ya da bir dernek değildir; hiçbir kurumla bağı yoktur ve resmi amblem ya da logo kullanmaz. Site bağış toplamaz, kurban hissesi satmaz, tatil paketi ya da kredi önermez, ortaklık (affiliate) bağlantısı içermez. Ziyaretçiden form, telefon numarası ya da e-posta adresi istenmez.</p>
+    <LegalIdentity lang={lang} />
+
+    <h2>Veriler nereden geliyor?</h2>
+    <p>Bayram, Ramazan, Kadir Gecesi ve kandil tarihleri Diyanet İşleri Başkanlığının her yıl yayımladığı dini günler listesinden alınır: <Fragment set:html={s('dg2027', '2027 listesi')} /> ve <Fragment set:html={s('dg2028', '2028 listesi')} /> gibi. Resmi tatillerin hangi günler olduğu ve kaç gün sürdüğü <Fragment set:html={s('k2429', '2429 sayılı Kanunun')} /> resmi metninden okunur. Resmi tatilde çalışma ücreti ve yıllık izin <Fragment set:html={s('k4857', '4857 sayılı İş Kanunundan')} />, memur izinleri <Fragment set:html={s('k657', '657 sayılı Devlet Memurları Kanunundan')} /> gelir. İdari izin kararları için <Fragment set:html={s('resmigazete', 'Resmî Gazete')} /> taranır; 2027 için henüz yayımlanmış bir karar yoktur ve site bunu açıkça yazar.</p>
+    <p>İmsak ve iftar saatleri kopyalanmaz, hesaplanır. Hesap, Diyanet'in açıkladığı ölçülerle yapılır: imsak için güneşin ufkun 18 derece altına inmesi, yatsı için 17 derece ve resmi temkin süreleri. Sonuçları <Fragment set:html={s('namazvakitleri', 'Diyanet\'in resmi namaz vakitleriyle')} /> {D.iller} il ve {D.gunler.adet} gün boyunca, {D.karsilastirma.toLocaleString('tr-TR')} vakit üzerinden karşılaştırdık; hiçbir vakitte fark bir dakikayı geçmedi. Yöntemin tamamı <a href={route('method', lang)}>yöntem</a> sayfasında, hataları nasıl düzelttiğimiz <a href={route('editorial', lang)}>yayın ilkelerinde</a> anlatılır.</p>
+
+    <h2>Neyi farklı yapıyoruz?</h2>
+    <ul>
+      <li><strong>Cevap ilk ekranda.</strong> Bayramın tarihi, tatilin süresi ve izinle kaç gün olduğu sayfanın en üstünde, hesaplayıcının içinde görünür.</li>
+      <li><strong>Hafta sonu kuralı hesaba katılır.</strong> Türkiye'de hafta sonuna düşen tatil başka güne aktarılmaz; bu yüzden “4,5 gün” yazan bir bayram, beş gün çalışan biri için çok daha kısa olabilir. Site her yıl için gerçek süreyi hesaplar.</li>
+      <li><strong>Arefe yarım gün olarak gösterilir.</strong> Kanuna göre arefe saat 13.00'ten itibaren tatildir; sabahı çalışılır. Planlayıcı, arefe sabahı için izin almayı ayrı bir seçenek olarak sunar.</li>
+      <li><strong>Bilinmeyen “bilinmiyor” diye yazılır.</strong> İdari izin yayımlanmadıysa “henüz açıklanmadı” yazarız; tahmin etmeyiz.</li>
+      <li><strong>İmsakiye ölçülerek doğrulanır.</strong> Saatlerin resmi takvime ne kadar uyduğunu yüzde olarak yayımlarız.</li>
+      <li><strong>Veriniz sizde kalır.</strong> Seçtiğiniz il, yıl ya da ücret sunucuya gönderilmez.</li>
+    </ul>
+
+    <h2>Sitede neler var?</h2>
+    <p>Sayfalar dört bölümde toplanır. <strong>Bayramlar</strong> bölümünde <a href={route('kurban-bayrami-2027', lang)}>Kurban Bayramı 2027</a> ve <a href={route('ramazan-bayrami-2027', lang)}>Ramazan Bayramı 2027</a> sayfaları, 2028 bayramları, arefe günü kuralı, bayram tatilinin kaç gün süreceği ve canlı <a href={route('bayrama-kac-gun-kaldi', lang)}>bayram geri sayımı</a> bulunur. <strong>Ramazan</strong> bölümünde Ramazan 2027 takvimi, Kadir Gecesi, teravih ve 81 il için <a href={route('imsakiye-2027', lang)}>imsakiye</a> vardır; iftar ve imsak saatleri için ayrı araçlar ve canlı bir iftar sayacı sunulur. <strong>İller</strong> bölümünde on büyük il için ilin coğrafyasına göre oruç sürelerini ve komşu illerle farkları anlatan sayfalar yer alır. <strong>Tatil ve izin</strong> bölümünde 2026, 2027 ve 2028 resmi tatilleri, köprü günleri, yıllık izin hakkı, resmi tatilde çalışma ücreti ve <a href={route('idari-izin-2027', lang)}>idari izin</a> durumu hesaplanır.</p>
+    <p>Her sayfa aynı düzeni izler: en üstte sorunun cevabını veren bir hesaplayıcı, ardından cevabın kısa bir özeti, sonra ayrıntılar, tablolar ve kaynaklar. Sayfaların altında kaynakların okunduğu tarih yazılıdır. Bir sayfadaki bir tarih ya da süre değiştiğinde, aynı motoru kullanan bütün sayfalar birlikte güncellenir; bu yüzden sitenin iki sayfası birbirine çelişen bir tarih veremez. Diyanet yeni bir yılın listesini yayımladığında ya da kanunda bir değişiklik olduğunda, önce motoru ve testleri güncelleriz; sayfalar ancak bütün testler yeniden geçtikten sonra yayına çıkar. Böylece sitedeki her sayı, kaynağına kadar izlenebilir kalır.</p>
+
+    <h2>Verileriniz</h2>
+    <p>Her hesaplayıcı tarayıcınızda çalışır. Girdiğiniz il, yıl, izin günü ve ücret ne gönderilir ne saklanır. Hesap ya da form yoktur. Seçimleriniz, bağlantıyı paylaşabilmeniz için yalnızca adres satırına yazılır. Sitede reklam amaçlı izleme yapılmaz; ziyaret ölçümünün nasıl çalıştığı ve nasıl reddedileceği de aynı yerde anlatılır. Ayrıntılar <a href={route('privacy', lang)}>gizlilik politikasında</a> ve <a href={route('cookies', lang)}>çerezler</a> sayfasında.</p>
+
+    <h2>Site ne yapmaz?</h2>
+    <p>Site izin onaylamaz, iş sözleşmenizi bilmez ve hukuki danışmanlık vermez. Toplu iş sözleşmenizin daha fazla izin ya da arefe günü tam tatil verip vermediği sizin belgelerinizde yazar. Okul tatilleri ve sınav takvimleri kapsam dışıdır. Dini konularda fetva vermeyiz; teravih gibi konularda yalnızca kaynakta yazılanları, kaynağını göstererek aktarırız. İbadet vakitlerinde Diyanet'in resmi takvimi esastır.</p>
+
+    <h2>Sık sorulan sorular</h2>
+    {faqs.map((f) => (<><h3>{f.q}</h3><p>{f.a}</p></>))}
+
+    <h2>Bize yazın</h2>
+    <p>Bir tarih, tatil süresi ya da vakit yanlış görünüyorsa <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> adresine yazın. Sayfanın adresini, ili ve tarihi, mümkünse dayandığınız kaynağı ekleyin. Kaynakla karşılaştırır ve birkaç gün içinde düzeltiriz.</p>
+  </article>
+</PageLayout>

@@ -1,0 +1,1184 @@
+{
+ "_lisezmoi": "Dini günler listesi, Diyanet İşleri Başkanlığı, vakithesaplama.diyanet.gov.tr, okundu 2026-10-28. Script : scratchpad dgjson.py. Gece (kandil, Kadir) : tarih = gecenin başladığı akşam.",
+ "retrieved_at": "2026-10-28",
+ "years": {
+  "2026": {
+   "source": "https://vakithesaplama.diyanet.gov.tr/dinigunler.php?yil=2026",
+   "events": [
+    {
+     "id": "mirac",
+     "date": "2026-01-15",
+     "pair": false,
+     "hicri": "26 Receb 1447"
+    },
+    {
+     "id": "berat",
+     "date": "2026-02-02",
+     "pair": false,
+     "hicri": "14 Şaban 1447"
+    },
+    {
+     "id": "ramazan-baslangici",
+     "date": "2026-02-19",
+     "pair": false,
+     "hicri": "1 Ramazan 1447"
+    },
+    {
+     "id": "kadir",
+     "date": "2026-03-16",
+     "pair": false,
+     "hicri": "26 Ramazan 1447"
+    },
+    {
+     "id": "ramazan-arefe",
+     "date": "2026-03-19",
+     "pair": false,
+     "hicri": "29 Ramazan 1447"
+    },
+    {
+     "id": "ramazan-1",
+     "date": "2026-03-20",
+     "pair": false,
+     "hicri": "1 Şevval 1447"
+    },
+    {
+     "id": "ramazan-2",
+     "date": "2026-03-21",
+     "pair": false,
+     "hicri": "2 Şevval 1447"
+    },
+    {
+     "id": "ramazan-3",
+     "date": "2026-03-22",
+     "pair": false,
+     "hicri": "3 Şevval 1447"
+    },
+    {
+     "id": "kurban-arefe",
+     "date": "2026-05-26",
+     "pair": false,
+     "hicri": "9 Zilhicce 1447"
+    },
+    {
+     "id": "kurban-1",
+     "date": "2026-05-27",
+     "pair": false,
+     "hicri": "10 Zilhicce 1447"
+    },
+    {
+     "id": "kurban-2",
+     "date": "2026-05-28",
+     "pair": false,
+     "hicri": "11 Zilhicce 1447"
+    },
+    {
+     "id": "kurban-3",
+     "date": "2026-05-29",
+     "pair": false,
+     "hicri": "12 Zilhicce 1447"
+    },
+    {
+     "id": "kurban-4",
+     "date": "2026-05-30",
+     "pair": false,
+     "hicri": "13 Zilhicce 1447"
+    },
+    {
+     "id": "hicri-yilbasi",
+     "date": "2026-06-16",
+     "pair": false,
+     "hicri": "1 Muharrem 1448"
+    },
+    {
+     "id": "asure",
+     "date": "2026-06-25",
+     "pair": false,
+     "hicri": "10 Muharrem 1448"
+    },
+    {
+     "id": "mevlid",
+     "date": "2026-08-24",
+     "pair": false,
+     "hicri": "11 Rebiülevvel 1448"
+    },
+    {
+     "id": "uc-aylar",
+     "date": "2026-12-10",
+     "pair": false,
+     "hicri": "1 Receb 1448"
+    },
+    {
+     "id": "regaib",
+     "date": "2026-12-10",
+     "pair": false,
+     "hicri": "1 Receb 1448"
+    }
+   ]
+  },
+  "2027": {
+   "source": "https://vakithesaplama.diyanet.gov.tr/icerik.php?icerik=154",
+   "events": [
+    {
+     "id": "mirac",
+     "date": "2027-01-04",
+     "pair": false,
+     "hicri": "26 Receb 1448"
+    },
+    {
+     "id": "berat",
+     "date": "2027-01-22",
+     "pair": false,
+     "hicri": "14 Şaban 1448"
+    },
+    {
+     "id": "ramazan-baslangici",
+     "date": "2027-02-08",
+     "pair": false,
+     "hicri": "1 Ramazan 1448"
+    },
+    {
+     "id": "kadir",
+     "date": "2027-03-05",
+     "pair": false,
+     "hicri": "26 Ramazan 1448"
+    },
+    {
+     "id": "ramazan-arefe",
+     "date": "2027-03-08",
+     "pair": false,
+     "hicri": "29 Ramazan 1448"
+    },
+    {
+     "id": "ramazan-1",
+     "date": "2027-03-09",
+     "pair": false,
+     "hicri": "1 Şevval 1448"
+    },
+    {
+     "id": "ramazan-2",
+     "date": "2027-03-10",
+     "pair": false,
+     "hicri": "2 Şevval 1448"
+    },
+    {
+     "id": "ramazan-3",
+     "date": "2027-03-11",
+     "pair": false,
+     "hicri": "3 Şevval 1448"
+    },
+    {
+     "id": "kurban-arefe",
+     "date": "2027-05-15",
+     "pair": false,
+     "hicri": "9 Zilhicce 1448"
+    },
+    {
+     "id": "kurban-1",
+     "date": "2027-05-16",
+     "pair": false,
+     "hicri": "10 Zilhicce 1448"
+    },
+    {
+     "id": "kurban-2",
+     "date": "2027-05-17",
+     "pair": false,
+     "hicri": "11 Zilhicce 1448"
+    },
+    {
+     "id": "kurban-3",
+     "date": "2027-05-18",
+     "pair": false,
+     "hicri": "12 Zilhicce 1448"
+    },
+    {
+     "id": "kurban-4",
+     "date": "2027-05-19",
+     "pair": false,
+     "hicri": "13 Zilhicce 1448"
+    },
+    {
+     "id": "hicri-yilbasi",
+     "date": "2027-06-06",
+     "pair": false,
+     "hicri": "1 Muharrem 1449"
+    },
+    {
+     "id": "asure",
+     "date": "2027-06-15",
+     "pair": false,
+     "hicri": "10 Muharrem 1449"
+    },
+    {
+     "id": "mevlid",
+     "date": "2027-08-13",
+     "pair": false,
+     "hicri": "11 Rebiülevvel 1449"
+    },
+    {
+     "id": "uc-aylar",
+     "date": "2027-11-29",
+     "pair": false,
+     "hicri": "1 Receb 1449"
+    },
+    {
+     "id": "regaib",
+     "date": "2027-12-02",
+     "pair": false,
+     "hicri": "4 Receb 1449"
+    },
+    {
+     "id": "mirac",
+     "date": "2027-12-24",
+     "pair": false,
+     "hicri": "26 Receb 1449"
+    }
+   ]
+  },
+  "2028": {
+   "source": "https://vakithesaplama.diyanet.gov.tr/icerik.php?icerik=185",
+   "events": [
+    {
+     "id": "berat",
+     "date": "2028-01-11",
+     "pair": true,
+     "hicri": "14 Şaban 1449"
+    },
+    {
+     "id": "ramazan-baslangici",
+     "date": "2028-01-28",
+     "pair": false,
+     "hicri": "1 Ramazan 1449"
+    },
+    {
+     "id": "kadir",
+     "date": "2028-02-22",
+     "pair": true,
+     "hicri": "26 Ramazan 1449"
+    },
+    {
+     "id": "ramazan-arefe",
+     "date": "2028-02-25",
+     "pair": false,
+     "hicri": "29 Ramazan 1449"
+    },
+    {
+     "id": "ramazan-1",
+     "date": "2028-02-26",
+     "pair": false,
+     "hicri": "1 Şevval 1449"
+    },
+    {
+     "id": "ramazan-2",
+     "date": "2028-02-27",
+     "pair": false,
+     "hicri": "2 Şevval 1449"
+    },
+    {
+     "id": "ramazan-3",
+     "date": "2028-02-28",
+     "pair": false,
+     "hicri": "3 Şevval 1449"
+    },
+    {
+     "id": "kurban-arefe",
+     "date": "2028-05-04",
+     "pair": false,
+     "hicri": "9 Zilhicce 1449"
+    },
+    {
+     "id": "kurban-1",
+     "date": "2028-05-05",
+     "pair": false,
+     "hicri": "10 Zilhicce 1449"
+    },
+    {
+     "id": "kurban-2",
+     "date": "2028-05-06",
+     "pair": false,
+     "hicri": "11 Zilhicce 1449"
+    },
+    {
+     "id": "kurban-3",
+     "date": "2028-05-07",
+     "pair": false,
+     "hicri": "12 Zilhicce 1449"
+    },
+    {
+     "id": "kurban-4",
+     "date": "2028-05-08",
+     "pair": false,
+     "hicri": "13 Zilhicce 1449"
+    },
+    {
+     "id": "hicri-yilbasi",
+     "date": "2028-05-25",
+     "pair": false,
+     "hicri": "1 Muharrem 1450"
+    },
+    {
+     "id": "asure",
+     "date": "2028-06-03",
+     "pair": false,
+     "hicri": "10 Muharrem 1450"
+    },
+    {
+     "id": "mevlid",
+     "date": "2028-08-02",
+     "pair": true,
+     "hicri": "11 Rebiülevvel 1450"
+    },
+    {
+     "id": "uc-aylar",
+     "date": "2028-11-18",
+     "pair": false,
+     "hicri": "1 Receb 1450"
+    },
+    {
+     "id": "regaib",
+     "date": "2028-11-23",
+     "pair": true,
+     "hicri": "6 Receb 1450"
+    },
+    {
+     "id": "mirac",
+     "date": "2028-12-13",
+     "pair": true,
+     "hicri": "26 Receb 1450"
+    },
+    {
+     "id": "berat",
+     "date": "2028-12-30",
+     "pair": true,
+     "hicri": "14 Şaban 1450"
+    }
+   ]
+  },
+  "2029": {
+   "source": "https://vakithesaplama.diyanet.gov.tr/icerik.php?icerik=186",
+   "events": [
+    {
+     "id": "ramazan-baslangici",
+     "date": "2029-01-16",
+     "pair": false,
+     "hicri": "1 Ramazan 1450"
+    },
+    {
+     "id": "kadir",
+     "date": "2029-02-10",
+     "pair": true,
+     "hicri": "26 Ramazan 1450"
+    },
+    {
+     "id": "ramazan-arefe",
+     "date": "2029-02-13",
+     "pair": false,
+     "hicri": "29 Ramazan 1450"
+    },
+    {
+     "id": "ramazan-1",
+     "date": "2029-02-14",
+     "pair": false,
+     "hicri": "1 Şevval 1450"
+    },
+    {
+     "id": "ramazan-2",
+     "date": "2029-02-15",
+     "pair": false,
+     "hicri": "2 Şevval 1450"
+    },
+    {
+     "id": "ramazan-3",
+     "date": "2029-02-16",
+     "pair": false,
+     "hicri": "3 Şevval 1450"
+    },
+    {
+     "id": "kurban-arefe",
+     "date": "2029-04-23",
+     "pair": false,
+     "hicri": "9 Zilhicce 1450"
+    },
+    {
+     "id": "kurban-1",
+     "date": "2029-04-24",
+     "pair": false,
+     "hicri": "10 Zilhicce 1450"
+    },
+    {
+     "id": "kurban-2",
+     "date": "2029-04-25",
+     "pair": false,
+     "hicri": "11 Zilhicce 1450"
+    },
+    {
+     "id": "kurban-3",
+     "date": "2029-04-26",
+     "pair": false,
+     "hicri": "12 Zilhicce 1450"
+    },
+    {
+     "id": "kurban-4",
+     "date": "2029-04-27",
+     "pair": false,
+     "hicri": "13 Zilhicce 1450"
+    },
+    {
+     "id": "hicri-yilbasi",
+     "date": "2029-05-14",
+     "pair": false,
+     "hicri": "1 Muharrem 1451"
+    },
+    {
+     "id": "asure",
+     "date": "2029-05-23",
+     "pair": false,
+     "hicri": "10 Muharrem 1451"
+    },
+    {
+     "id": "mevlid",
+     "date": "2029-07-23",
+     "pair": true,
+     "hicri": "11 Rebiülevvel 1451"
+    },
+    {
+     "id": "uc-aylar",
+     "date": "2029-11-07",
+     "pair": false,
+     "hicri": "1 Receb 1451"
+    },
+    {
+     "id": "regaib",
+     "date": "2029-11-08",
+     "pair": true,
+     "hicri": "2 Receb 1451"
+    },
+    {
+     "id": "mirac",
+     "date": "2029-12-02",
+     "pair": true,
+     "hicri": "26 Receb 1451"
+    },
+    {
+     "id": "berat",
+     "date": "2029-12-20",
+     "pair": true,
+     "hicri": "14 Şaban 1451"
+    }
+   ]
+  },
+  "2030": {
+   "source": "https://vakithesaplama.diyanet.gov.tr/icerik.php?icerik=187",
+   "events": [
+    {
+     "id": "ramazan-baslangici",
+     "date": "2030-01-05",
+     "pair": false,
+     "hicri": "1 Ramazan 1451"
+    },
+    {
+     "id": "kadir",
+     "date": "2030-01-30",
+     "pair": true,
+     "hicri": "26 Ramazan 1451"
+    },
+    {
+     "id": "ramazan-arefe",
+     "date": "2030-02-03",
+     "pair": false,
+     "hicri": "30 Ramazan 1451"
+    },
+    {
+     "id": "ramazan-1",
+     "date": "2030-02-04",
+     "pair": false,
+     "hicri": "1 Şevval 1451"
+    },
+    {
+     "id": "ramazan-2",
+     "date": "2030-02-05",
+     "pair": false,
+     "hicri": "2 Şevval 1451"
+    },
+    {
+     "id": "ramazan-3",
+     "date": "2030-02-06",
+     "pair": false,
+     "hicri": "3 Şevval 1451"
+    },
+    {
+     "id": "kurban-arefe",
+     "date": "2030-04-12",
+     "pair": false,
+     "hicri": "9 Zilhicce 1451"
+    },
+    {
+     "id": "kurban-1",
+     "date": "2030-04-13",
+     "pair": false,
+     "hicri": "10 Zilhicce 1451"
+    },
+    {
+     "id": "kurban-2",
+     "date": "2030-04-14",
+     "pair": false,
+     "hicri": "11 Zilhicce 1451"
+    },
+    {
+     "id": "kurban-3",
+     "date": "2030-04-15",
+     "pair": false,
+     "hicri": "12 Zilhicce 1451"
+    },
+    {
+     "id": "kurban-4",
+     "date": "2030-04-16",
+     "pair": false,
+     "hicri": "13 Zilhicce 1451"
+    },
+    {
+     "id": "hicri-yilbasi",
+     "date": "2030-05-03",
+     "pair": false,
+     "hicri": "1 Muharrem 1452"
+    },
+    {
+     "id": "asure",
+     "date": "2030-05-12",
+     "pair": false,
+     "hicri": "10 Muharrem 1452"
+    },
+    {
+     "id": "mevlid",
+     "date": "2030-07-12",
+     "pair": true,
+     "hicri": "11 Rebiülevvel 1452"
+    },
+    {
+     "id": "uc-aylar",
+     "date": "2030-10-28",
+     "pair": false,
+     "hicri": "1 Receb 1452"
+    },
+    {
+     "id": "regaib",
+     "date": "2030-10-31",
+     "pair": true,
+     "hicri": "4 Receb 1452"
+    },
+    {
+     "id": "mirac",
+     "date": "2030-11-22",
+     "pair": true,
+     "hicri": "26 Receb 1452"
+    },
+    {
+     "id": "berat",
+     "date": "2030-12-09",
+     "pair": true,
+     "hicri": "14 Şaban 1452"
+    },
+    {
+     "id": "ramazan-baslangici",
+     "date": "2030-12-26",
+     "pair": false,
+     "hicri": "1 Ramazan 1452"
+    }
+   ]
+  },
+  "2031": {
+   "source": "https://vakithesaplama.diyanet.gov.tr/icerik.php?icerik=188",
+   "events": [
+    {
+     "id": "kadir",
+     "date": "2031-01-20",
+     "pair": true,
+     "hicri": "26 Ramazan 1452"
+    },
+    {
+     "id": "ramazan-arefe",
+     "date": "2031-01-23",
+     "pair": false,
+     "hicri": "29 Ramazan 1452"
+    },
+    {
+     "id": "ramazan-1",
+     "date": "2031-01-24",
+     "pair": false,
+     "hicri": "1 Şevval 1452"
+    },
+    {
+     "id": "ramazan-2",
+     "date": "2031-01-25",
+     "pair": false,
+     "hicri": "2 Şevval 1452"
+    },
+    {
+     "id": "ramazan-3",
+     "date": "2031-01-26",
+     "pair": false,
+     "hicri": "3 Şevval 1452"
+    },
+    {
+     "id": "kurban-arefe",
+     "date": "2031-04-01",
+     "pair": false,
+     "hicri": "9 Zilhicce 1452"
+    },
+    {
+     "id": "kurban-1",
+     "date": "2031-04-02",
+     "pair": false,
+     "hicri": "10 Zilhicce 1452"
+    },
+    {
+     "id": "kurban-2",
+     "date": "2031-04-03",
+     "pair": false,
+     "hicri": "11 Zilhicce 1452"
+    },
+    {
+     "id": "kurban-3",
+     "date": "2031-04-04",
+     "pair": false,
+     "hicri": "12 Zilhicce 1452"
+    },
+    {
+     "id": "kurban-4",
+     "date": "2031-04-05",
+     "pair": false,
+     "hicri": "13 Zilhicce 1452"
+    },
+    {
+     "id": "hicri-yilbasi",
+     "date": "2031-04-23",
+     "pair": false,
+     "hicri": "1 Muharrem 1453"
+    },
+    {
+     "id": "asure",
+     "date": "2031-05-02",
+     "pair": false,
+     "hicri": "10 Muharrem 1453"
+    },
+    {
+     "id": "mevlid",
+     "date": "2031-07-01",
+     "pair": true,
+     "hicri": "11 Rebiülevvel 1453"
+    },
+    {
+     "id": "regaib",
+     "date": "2031-10-16",
+     "pair": true,
+     "hicri": "29 Cemaziyelahir 1453"
+    },
+    {
+     "id": "uc-aylar",
+     "date": "2031-10-17",
+     "pair": false,
+     "hicri": "1 Receb 1453"
+    },
+    {
+     "id": "mirac",
+     "date": "2031-11-11",
+     "pair": true,
+     "hicri": "26 Receb 1453"
+    },
+    {
+     "id": "berat",
+     "date": "2031-11-29",
+     "pair": true,
+     "hicri": "14 Şaban 1453"
+    },
+    {
+     "id": "ramazan-baslangici",
+     "date": "2031-12-15",
+     "pair": false,
+     "hicri": "1 Ramazan 1453"
+    }
+   ]
+  },
+  "2032": {
+   "source": "https://vakithesaplama.diyanet.gov.tr/icerik.php?icerik=189",
+   "events": [
+    {
+     "id": "kadir",
+     "date": "2032-01-09",
+     "pair": true,
+     "hicri": "26 Ramazan 1453"
+    },
+    {
+     "id": "ramazan-arefe",
+     "date": "2032-01-13",
+     "pair": false,
+     "hicri": "30 Ramazan 1453"
+    },
+    {
+     "id": "ramazan-1",
+     "date": "2032-01-14",
+     "pair": false,
+     "hicri": "1 Şevval 1453"
+    },
+    {
+     "id": "ramazan-2",
+     "date": "2032-01-15",
+     "pair": false,
+     "hicri": "2 Şevval 1453"
+    },
+    {
+     "id": "ramazan-3",
+     "date": "2032-01-16",
+     "pair": false,
+     "hicri": "3 Şevval 1453"
+    },
+    {
+     "id": "kurban-arefe",
+     "date": "2032-03-21",
+     "pair": false,
+     "hicri": "9 Zilhicce 1453"
+    },
+    {
+     "id": "kurban-1",
+     "date": "2032-03-22",
+     "pair": false,
+     "hicri": "10 Zilhicce 1453"
+    },
+    {
+     "id": "kurban-2",
+     "date": "2032-03-23",
+     "pair": false,
+     "hicri": "11 Zilhicce 1453"
+    },
+    {
+     "id": "kurban-3",
+     "date": "2032-03-24",
+     "pair": false,
+     "hicri": "12 Zilhicce 1453"
+    },
+    {
+     "id": "kurban-4",
+     "date": "2032-03-25",
+     "pair": false,
+     "hicri": "13 Zilhicce 1453"
+    },
+    {
+     "id": "hicri-yilbasi",
+     "date": "2032-04-11",
+     "pair": false,
+     "hicri": "1 Muharrem 1454"
+    },
+    {
+     "id": "asure",
+     "date": "2032-04-20",
+     "pair": false,
+     "hicri": "10 Muharrem 1454"
+    },
+    {
+     "id": "mevlid",
+     "date": "2032-06-19",
+     "pair": true,
+     "hicri": "11 Rebiülevvel 1454"
+    },
+    {
+     "id": "uc-aylar",
+     "date": "2032-10-06",
+     "pair": false,
+     "hicri": "1 Receb 1454"
+    },
+    {
+     "id": "regaib",
+     "date": "2032-10-07",
+     "pair": true,
+     "hicri": "2 Receb 1454"
+    },
+    {
+     "id": "mirac",
+     "date": "2032-10-31",
+     "pair": true,
+     "hicri": "26 Receb 1454"
+    },
+    {
+     "id": "berat",
+     "date": "2032-11-17",
+     "pair": true,
+     "hicri": "14 Şaban 1454"
+    },
+    {
+     "id": "ramazan-baslangici",
+     "date": "2032-12-04",
+     "pair": false,
+     "hicri": "1 Ramazan 1454"
+    },
+    {
+     "id": "kadir",
+     "date": "2032-12-29",
+     "pair": true,
+     "hicri": "26 Ramazan 1454"
+    }
+   ]
+  },
+  "2033": {
+   "source": "https://vakithesaplama.diyanet.gov.tr/icerik.php?icerik=190",
+   "events": [
+    {
+     "id": "ramazan-arefe",
+     "date": "2033-01-01",
+     "pair": false,
+     "hicri": "29 Ramazan 1454"
+    },
+    {
+     "id": "ramazan-1",
+     "date": "2033-01-02",
+     "pair": false,
+     "hicri": "1 Şevval 1454"
+    },
+    {
+     "id": "ramazan-2",
+     "date": "2033-01-03",
+     "pair": false,
+     "hicri": "2 Şevval 1454"
+    },
+    {
+     "id": "ramazan-3",
+     "date": "2033-01-04",
+     "pair": false,
+     "hicri": "3 Şevval 1454"
+    },
+    {
+     "id": "kurban-arefe",
+     "date": "2033-03-10",
+     "pair": false,
+     "hicri": "9 Zilhicce 1454"
+    },
+    {
+     "id": "kurban-1",
+     "date": "2033-03-11",
+     "pair": false,
+     "hicri": "10 Zilhicce 1454"
+    },
+    {
+     "id": "kurban-2",
+     "date": "2033-03-12",
+     "pair": false,
+     "hicri": "11 Zilhicce 1454"
+    },
+    {
+     "id": "kurban-3",
+     "date": "2033-03-13",
+     "pair": false,
+     "hicri": "12 Zilhicce 1454"
+    },
+    {
+     "id": "kurban-4",
+     "date": "2033-03-14",
+     "pair": false,
+     "hicri": "13 Zilhicce 1454"
+    },
+    {
+     "id": "hicri-yilbasi",
+     "date": "2033-04-01",
+     "pair": false,
+     "hicri": "1 Muharrem 1455"
+    },
+    {
+     "id": "asure",
+     "date": "2033-04-10",
+     "pair": false,
+     "hicri": "10 Muharrem 1455"
+    },
+    {
+     "id": "mevlid",
+     "date": "2033-06-09",
+     "pair": true,
+     "hicri": "11 Rebiülevvel 1455"
+    },
+    {
+     "id": "uc-aylar",
+     "date": "2033-09-25",
+     "pair": false,
+     "hicri": "1 Receb 1455"
+    },
+    {
+     "id": "regaib",
+     "date": "2033-09-29",
+     "pair": true,
+     "hicri": "5 Receb 1455"
+    },
+    {
+     "id": "mirac",
+     "date": "2033-10-20",
+     "pair": true,
+     "hicri": "26 Receb 1455"
+    },
+    {
+     "id": "berat",
+     "date": "2033-11-06",
+     "pair": true,
+     "hicri": "14 Şaban 1455"
+    },
+    {
+     "id": "ramazan-baslangici",
+     "date": "2033-11-23",
+     "pair": false,
+     "hicri": "1 Ramazan 1455"
+    },
+    {
+     "id": "kadir",
+     "date": "2033-12-18",
+     "pair": true,
+     "hicri": "26 Ramazan 1455"
+    },
+    {
+     "id": "ramazan-arefe",
+     "date": "2033-12-22",
+     "pair": false,
+     "hicri": "30 Ramazan 1455"
+    },
+    {
+     "id": "ramazan-1",
+     "date": "2033-12-23",
+     "pair": false,
+     "hicri": "1 Şevval 1455"
+    },
+    {
+     "id": "ramazan-2",
+     "date": "2033-12-24",
+     "pair": false,
+     "hicri": "2 Şevval 1455"
+    },
+    {
+     "id": "ramazan-3",
+     "date": "2033-12-25",
+     "pair": false,
+     "hicri": "3 Şevval 1455"
+    }
+   ]
+  },
+  "2034": {
+   "source": "https://vakithesaplama.diyanet.gov.tr/icerik.php?icerik=191",
+   "events": [
+    {
+     "id": "kurban-arefe",
+     "date": "2034-02-28",
+     "pair": false,
+     "hicri": "9 Zilhicce 1455"
+    },
+    {
+     "id": "kurban-1",
+     "date": "2034-03-01",
+     "pair": false,
+     "hicri": "10 Zilhicce 1455"
+    },
+    {
+     "id": "kurban-2",
+     "date": "2034-03-02",
+     "pair": false,
+     "hicri": "11 Zilhicce 1455"
+    },
+    {
+     "id": "kurban-3",
+     "date": "2034-03-03",
+     "pair": false,
+     "hicri": "12 Zilhicce 1455"
+    },
+    {
+     "id": "kurban-4",
+     "date": "2034-03-04",
+     "pair": false,
+     "hicri": "13 Zilhicce 1455"
+    },
+    {
+     "id": "hicri-yilbasi",
+     "date": "2034-03-21",
+     "pair": false,
+     "hicri": "1 Muharrem 1456"
+    },
+    {
+     "id": "asure",
+     "date": "2034-03-30",
+     "pair": false,
+     "hicri": "10 Muharrem 1456"
+    },
+    {
+     "id": "mevlid",
+     "date": "2034-05-29",
+     "pair": true,
+     "hicri": "11 Rebiülevvel 1456"
+    },
+    {
+     "id": "uc-aylar",
+     "date": "2034-09-14",
+     "pair": false,
+     "hicri": "1 Receb 1456"
+    },
+    {
+     "id": "regaib",
+     "date": "2034-09-14",
+     "pair": true,
+     "hicri": "1 Receb 1456"
+    },
+    {
+     "id": "mirac",
+     "date": "2034-10-09",
+     "pair": true,
+     "hicri": "26 Receb 1456"
+    },
+    {
+     "id": "berat",
+     "date": "2034-10-26",
+     "pair": true,
+     "hicri": "14 Şaban 1456"
+    },
+    {
+     "id": "ramazan-baslangici",
+     "date": "2034-11-12",
+     "pair": false,
+     "hicri": "1 Ramazan 1456"
+    },
+    {
+     "id": "kadir",
+     "date": "2034-12-07",
+     "pair": true,
+     "hicri": "26 Ramazan 1456"
+    },
+    {
+     "id": "ramazan-arefe",
+     "date": "2034-12-11",
+     "pair": false,
+     "hicri": "30 Ramazan 1456"
+    },
+    {
+     "id": "ramazan-1",
+     "date": "2034-12-12",
+     "pair": false,
+     "hicri": "1 Şevval 1456"
+    },
+    {
+     "id": "ramazan-2",
+     "date": "2034-12-13",
+     "pair": false,
+     "hicri": "2 Şevval 1456"
+    },
+    {
+     "id": "ramazan-3",
+     "date": "2034-12-14",
+     "pair": false,
+     "hicri": "3 Şevval 1456"
+    }
+   ]
+  },
+  "2035": {
+   "source": "https://vakithesaplama.diyanet.gov.tr/icerik.php?icerik=192",
+   "events": [
+    {
+     "id": "kurban-arefe",
+     "date": "2035-02-17",
+     "pair": false,
+     "hicri": "9 Zilhicce 1456"
+    },
+    {
+     "id": "kurban-1",
+     "date": "2035-02-18",
+     "pair": false,
+     "hicri": "10 Zilhicce 1456"
+    },
+    {
+     "id": "kurban-2",
+     "date": "2035-02-19",
+     "pair": false,
+     "hicri": "11 Zilhicce 1456"
+    },
+    {
+     "id": "kurban-3",
+     "date": "2035-02-20",
+     "pair": false,
+     "hicri": "12 Zilhicce 1456"
+    },
+    {
+     "id": "kurban-4",
+     "date": "2035-02-21",
+     "pair": false,
+     "hicri": "13 Zilhicce 1456"
+    },
+    {
+     "id": "hicri-yilbasi",
+     "date": "2035-03-11",
+     "pair": false,
+     "hicri": "1 Muharrem 1457"
+    },
+    {
+     "id": "asure",
+     "date": "2035-03-20",
+     "pair": false,
+     "hicri": "10 Muharrem 1457"
+    },
+    {
+     "id": "mevlid",
+     "date": "2035-05-19",
+     "pair": true,
+     "hicri": "11 Rebiülevvel 1457"
+    },
+    {
+     "id": "uc-aylar",
+     "date": "2035-09-03",
+     "pair": false,
+     "hicri": "1 Receb 1457"
+    },
+    {
+     "id": "regaib",
+     "date": "2035-09-06",
+     "pair": true,
+     "hicri": "4 Receb 1457"
+    },
+    {
+     "id": "mirac",
+     "date": "2035-09-28",
+     "pair": true,
+     "hicri": "26 Receb 1457"
+    },
+    {
+     "id": "berat",
+     "date": "2035-10-16",
+     "pair": true,
+     "hicri": "14 Şaban 1457"
+    },
+    {
+     "id": "ramazan-baslangici",
+     "date": "2035-11-01",
+     "pair": false,
+     "hicri": "1 Ramazan 1457"
+    },
+    {
+     "id": "kadir",
+     "date": "2035-11-26",
+     "pair": true,
+     "hicri": "26 Ramazan 1457"
+    },
+    {
+     "id": "ramazan-arefe",
+     "date": "2035-11-30",
+     "pair": false,
+     "hicri": "30 Ramazan 1457"
+    },
+    {
+     "id": "ramazan-1",
+     "date": "2035-12-01",
+     "pair": false,
+     "hicri": "1 Şevval 1457"
+    },
+    {
+     "id": "ramazan-2",
+     "date": "2035-12-02",
+     "pair": false,
+     "hicri": "2 Şevval 1457"
+    },
+    {
+     "id": "ramazan-3",
+     "date": "2035-12-03",
+     "pair": false,
+     "hicri": "3 Şevval 1457"
+    }
+   ]
+  }
+ }
+}

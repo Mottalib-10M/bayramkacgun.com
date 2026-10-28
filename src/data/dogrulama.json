@@ -1,0 +1,173 @@
+{
+ "_lisezmoi": "Hesaplanan vakitlerin Diyanet takvimiyle karşılaştırılması (namazvakitleri.diyanet.gov.tr, 81 il merkezi, okundu 2026-10-28). Diyanet saatleri yalnız doğrulama için okunur, sitede yayımlanmaz; örnek tablo (6 il, 2 gün) hariç.",
+ "okundu": "2026-10-28",
+ "gunler": {
+  "ilk": "2026-10-28",
+  "son": "2027-12-31",
+  "adet": 403
+ },
+ "iller": 81,
+ "karsilastirma": 195858,
+ "tam": {
+  "imsak": 93.4,
+  "gunes": 94.0,
+  "ogle": 96.2,
+  "ikindi": 92.7,
+  "aksam": 94.5,
+  "yatsi": 95.0
+ },
+ "ramazan2027": {
+  "imsak": 95.1,
+  "gunes": 94.9,
+  "ogle": 96.8,
+  "ikindi": 92.6,
+  "aksam": 93.7,
+  "yatsi": 95.3
+ },
+ "enFazlaFark": 1,
+ "ornek": {
+  "istanbul": {
+   "2027-02-08": {
+    "imsak": "06:35",
+    "aksam": "18:36"
+   },
+   "2027-03-08": {
+    "imsak": "05:57",
+    "aksam": "19:09"
+   }
+  },
+  "ankara": {
+   "2027-02-08": {
+    "imsak": "06:19",
+    "aksam": "18:22"
+   },
+   "2027-03-08": {
+    "imsak": "05:42",
+    "aksam": "18:54"
+   }
+  },
+  "izmir": {
+   "2027-02-08": {
+    "imsak": "06:41",
+    "aksam": "18:48"
+   },
+   "2027-03-08": {
+    "imsak": "06:06",
+    "aksam": "19:18"
+   }
+  },
+  "van": {
+   "2027-02-08": {
+    "imsak": "05:36",
+    "aksam": "17:42"
+   },
+   "2027-03-08": {
+    "imsak": "05:01",
+    "aksam": "18:13"
+   }
+  },
+  "edirne": {
+   "2027-02-08": {
+    "imsak": "06:45",
+    "aksam": "18:44"
+   },
+   "2027-03-08": {
+    "imsak": "06:06",
+    "aksam": "19:18"
+   }
+  },
+  "diyarbakir": {
+   "2027-02-08": {
+    "imsak": "05:48",
+    "aksam": "17:56"
+   },
+   "2027-03-08": {
+    "imsak": "05:14",
+    "aksam": "18:26"
+   }
+  }
+ },
+ "ilBazinda": {
+  "van": 83.8,
+  "siirt": 84.3,
+  "giresun": 84.4,
+  "edirne": 85.1,
+  "trabzon": 85.2,
+  "batman": 85.3,
+  "bursa": 87.9,
+  "kocaeli": 87.9,
+  "karabuk": 88,
+  "antalya": 88.9,
+  "yalova": 90,
+  "denizli": 90.4,
+  "kahramanmaras": 90.6,
+  "agri": 90.9,
+  "artvin": 91.2,
+  "mugla": 92.2,
+  "bitlis": 92.3,
+  "ordu": 92.7,
+  "kars": 92.9,
+  "kutahya": 93.1,
+  "kirikkale": 93.1,
+  "rize": 93.2,
+  "balikesir": 93.4,
+  "elazig": 93.5,
+  "hakkari": 93.7,
+  "eskisehir": 94.2,
+  "kirklareli": 94.2,
+  "bartin": 94.2,
+  "kastamonu": 94.3,
+  "yozgat": 94.3,
+  "kilis": 94.4,
+  "gaziantep": 94.6,
+  "erzurum": 94.7,
+  "sirnak": 94.8,
+  "amasya": 94.9,
+  "bolu": 95,
+  "nigde": 95,
+  "bingol": 95.1,
+  "mus": 95.2,
+  "samsun": 95.2,
+  "kirsehir": 95.3,
+  "tekirdag": 95.3,
+  "hatay": 95.4,
+  "burdur": 95.6,
+  "gumushane": 95.6,
+  "osmaniye": 95.8,
+  "konya": 95.9,
+  "corum": 96,
+  "aydin": 96.2,
+  "tunceli": 96.2,
+  "sakarya": 96.3,
+  "zonguldak": 96.3,
+  "igdir": 96.3,
+  "adiyaman": 96.4,
+  "diyarbakir": 96.4,
+  "izmir": 96.4,
+  "sanliurfa": 96.4,
+  "karaman": 96.4,
+  "istanbul": 96.6,
+  "bayburt": 96.7,
+  "erzincan": 96.9,
+  "kayseri": 96.9,
+  "isparta": 97.1,
+  "afyonkarahisar": 97.2,
+  "cankiri": 97.4,
+  "manisa": 97.4,
+  "nevsehir": 97.4,
+  "sinop": 97.4,
+  "sivas": 97.4,
+  "tokat": 97.4,
+  "usak": 97.6,
+  "aksaray": 97.8,
+  "mersin": 97.9,
+  "adana": 98.1,
+  "canakkale": 98.1,
+  "duzce": 98.1,
+  "ankara": 98.2,
+  "bilecik": 98.2,
+  "malatya": 98.3,
+  "ardahan": 98.6,
+  "mardin": 98.7
+ }
+}

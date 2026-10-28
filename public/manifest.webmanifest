@@ -1,0 +1,21 @@
+{
+ "name": "TR Bayram",
+ "short_name": "TR Bayram",
+ "description": "Kurban ve Ramazan Bayramı 2027 tarihleri, bayrama kaç gün kaldı, resmi tatiller 2027, 81 il için imsakiye ve iftar saatleri, köprü günleri ve izin planlayıcı.",
+ "start_url": "/tr/",
+ "display": "standalone",
+ "background_color": "#ffffff",
+ "theme_color": "#E30A17",
+ "icons": [
+  {
+   "src": "/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  }
+ ]
+}

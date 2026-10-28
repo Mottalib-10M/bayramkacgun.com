@@ -1,0 +1,16 @@
+---
+/** L'outil d'une page : un simulateur déclaratif de tool-specs.ts, la geri sayım, les vakitler du jour ou le calendrier annuel. */
+import SpecTool from './calc/SpecTool';
+import GeriSayim from './bt/GeriSayim';
+import Vakit from './bt/Vakit';
+import Takvim from './bt/Takvim';
+import { route } from '../i18n/routes';
+import type { Lang } from '../lib/format';
+interface Props { kind: string; lang: Lang; arg?: Record<string, number | string>; idPrefix?: string }
+const { kind, lang, arg, idPrefix = 't' } = Astro.props;
+const methodHref = route('method', lang);
+---
+{kind === 'takvim' ? <Takvim client:load lang={lang} year={Number(arg?.yil ?? 2027)} methodHref={methodHref} idPrefix={idPrefix} />
+  : kind === 'geri' ? <GeriSayim client:load lang={lang} hedef={arg?.hedef ? String(arg.hedef) as never : undefined} methodHref={methodHref} idPrefix={idPrefix} />
+  : kind === 'vakit' ? <Vakit client:load lang={lang} il={arg?.il ? String(arg.il) : undefined} methodHref={methodHref} idPrefix={idPrefix} />
+  : <SpecTool client:load kind={kind} lang={lang} arg={arg ? JSON.stringify(arg) : undefined} methodHref={methodHref} idPrefix={idPrefix} />}

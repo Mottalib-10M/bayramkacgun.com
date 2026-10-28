@@ -1,0 +1,4 @@
+# Sources propres à ce site (sources_officielles.py, point 3). Une ligne de commentaire avant chaque domaine.
+
+# TDV İslâm Ansiklopedisi : encyclopédie publiée par la Türkiye Diyanet Vakfı, fondation de la Présidence des affaires religieuses ; référence pour le nombre de rekat du teravih.
+islamansiklopedisi.org.tr

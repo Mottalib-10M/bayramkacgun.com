@@ -1,0 +1,78 @@
+---
+/** Yöntem: bayram tarihleri, 2429 sayılı Kanun, tatil hesabı, izin planlayıcı, vakit hesabı ve Diyanet karşılaştırması. Tüm sayılar motordan. */
+import PageLayout from '../../layouts/PageLayout.astro';
+import { route } from '../../i18n/routes';
+import { KIT as K } from '../../lib/kit';
+import { srcLink } from '../../lib/helpers';
+import { breadcrumbSchema, webPageSchema, faqSchema } from '../../lib/seo';
+import { displayDate, formatDecimal } from '../../lib/format';
+const lang = 'tr';
+const path = route('method', lang);
+const title = 'Bayram tarihleri ve imsakiye nasıl hesaplanır? Yöntem';
+const description = 'Bayram ve kandil tarihleri Diyanet listesinden, tatil süreleri 2429 sayılı Kanundan, izin planı tam hesapla, imsakiye Diyanet ölçüleriyle: yöntem ve sınırlar.';
+const s = (k: string, t: string) => srcLink(k, lang, t);
+const d = (x: string) => displayDate(x, 'tr-TR');
+const D = K.DOGRULAMA;
+const p = (x: number) => `%${formatDecimal(x, 1, 'tr')}`;
+const ADI: Record<string, string> = { imsak: 'İmsak', gunes: 'Güneş', ogle: 'Öğle', ikindi: 'İkindi', aksam: 'Akşam', yatsi: 'Yatsı' };
+const o10 = K.optimize(2027, 10), o10y = K.optimize(2027, 10, { yarim: true }), o10s = K.optimize(2027, 10, { hafta: '6' });
+const oz = K.yilOzeti(2027), oz6 = K.yilOzeti(2027, '6');
+const enKotu = Object.entries(D.ilBazinda).sort((a, b) => a[1] - b[1])[0];
+const IDARI = K.P.kopruIdariIzin as { taranan: string };
+const kb = K.bayram('kurban', 2027)!;
+const faqs = [
+  { q: 'Bayram tarihlerini siz mi hesaplıyorsunuz?', a: 'Hayır. Bayram, Ramazan, Kadir Gecesi ve kandil tarihleri Diyanet İşleri Başkanlığının her yıl yayımladığı dini günler listesinden okunur. Diyanet ay başlarını astronomik ölçüyle önceden belirler; bu yüzden tarihler yıllar öncesinden bellidir. Biz yalnızca bu tarihleri kanundaki tatil kurallarıyla birleştirir, tatil süresini ve izin planını hesaplarız.' },
+  { q: 'Hafta sonuna düşen tatil neden telafi edilmiyor?', a: '2429 sayılı Kanun, hafta sonuna denk gelen resmi tatil için başka bir gün öngörmez. Bu yüzden hesaplayıcılar toplam tatil süresi ile iş gününden düşen tatil süresini ayrı gösterir. Tatil yalnızca kamu personeline Cumhurbaşkanlığınca idari izin verilirse uzar; böyle bir karar Resmî Gazete\'de yayımlandığında siteye eklenir.' },
+  { q: 'İzin planlayıcısının önerisi neden en iyisi?', a: 'Planlayıcı tahmin yürütmez: yılın bütün çalışma bloklarını sıralar ve verdiğiniz izin bütçesiyle mümkün olan bütün birleşimleri dinamik programlamayla tarar. Seçilen plan, bütçeyi aşmadan en çok boş günü verendir; eşitlikte daha az izin kullananı tercih eder. Testler, bütçe arttıkça sonucun hiçbir zaman kötüleşmediğini her değişiklikte denetler.' },
+];
+---
+<PageLayout title={title} description={description} lang={lang} jsonLd={[webPageSchema({ name: 'Yöntem', description, path, lang }), faqSchema(faqs, lang), breadcrumbSchema([{ name: 'Ana sayfa', path: route('home', lang) }, { name: 'Yöntem', path }])]} breadcrumbs={[{ label: 'Yöntem' }]}>
+  <article class="prose prose-slate max-w-none">
+    <h1>Tarihler, tatiller ve vakitler nasıl hesaplanıyor?</h1>
+    <p>Bu sitedeki her hesaplayıcı tarayıcınızda çalışır. Seçtiğiniz il, yıl, izin günü ya da ücret cihazınızdan çıkmaz. Hesapların dayanağı üç kaynaktır: Diyanet İşleri Başkanlığının dini günler listeleri, 2429 sayılı Ulusal Bayram ve Genel Tatiller Hakkında Kanun ile iş ve memur mevzuatı, ve Diyanet'in namaz vakitleri için açıkladığı ölçüler. Hiçbir tarih ya da saat elle yazılmaz: bayram günleri listeden okunur, tatil süreleri kanunun kuralından çıkarılır, izin planı ve vakitler sizin seçiminizle o anda hesaplanır. Bilinmeyen bir şey, örneğin henüz yayımlanmamış bir idari izin, tahminle doldurulmaz; “henüz açıklanmadı” diye yazılır. Son tam okuma tarihimiz: {d(K.P.retrieved_at)}. Hesapladığımız imsak ve iftar saatlerini Diyanet'in resmi takvimiyle karşılaştırıyor ve uyum oranını bu sayfada yüzde olarak yayımlıyoruz; tatil sayıları ve izin planları ise her değişiklikte otomatik testlerden geçiyor. Aşağıda her adımı, nereden geldiğini ve nerede durduğunu anlatıyoruz.</p>
+
+    <h2>1. Bayram, Ramazan ve kandil tarihleri</h2>
+    <p>Ramazan ve Kurban Bayramı, Ramazanın ilk günü, Kadir Gecesi, kandiller, hicri yılbaşı ve aşure günü Diyanet'in her yıl için yayımladığı dini günler listesinden okunur: <Fragment set:html={s('dg2026', '2026')} />, <Fragment set:html={s('dg2027', '2027')} />, <Fragment set:html={s('dg2028', '2028')} /> ve <Fragment set:html={s('dg2029', '2029')} /> listeleri. Bu tarihleri kendimiz hesaplamıyoruz. Diyanet hicri ay başlarını önceden, astronomik ölçüyle belirler: yeni ay (içtima) sonrasında hilalin dünyanın herhangi bir yerinde görülebilir olması, yani güneşle arasındaki açının en az 8 derece ve ufuktan yüksekliğinin en az 5 derece olması esas alınır (<Fragment set:html={s('hilal', 'Diyanet tanımları')} />). Bu nedenle tarihler birkaç yıl önceden bellidir ve sonradan değişmez.</p>
+    <p>Kandiller ve Kadir Gecesi için listede yazan tarih, gecenin başladığı akşamdır. Örneğin Kadir Gecesi 2027 için listedeki gün, o günün iftarından sonra başlayan gecedir. Sitedeki tüm metinler bu kuralla yazılmıştır. Bazı ülkeler hilali gözle görmeyi beklediği için bayram orada bir gün önce ya da sonra başlayabilir; Diyanet'in <Fragment set:html={s('hicri-fark', 'hicri takvim farkı açıklaması')} /> bunun nedenini anlatır. Türkiye'deki resmi tatil her zaman Diyanet'in tarihine göredir.</p>
+
+    <h2>2. Resmi tatiller ve yarım günler</h2>
+    <p>Tatillerin listesi ve süreleri <Fragment set:html={s('k2429', '2429 sayılı Kanundan')} /> gelir. Kanun sabit tarihli tatilleri sayar: 1 Ocak, 23 Nisan, 1 Mayıs, 19 Mayıs, 15 Temmuz, 30 Ağustos ve 29 Ekim. 28 Ekim saat 13.00'ten itibaren tatildir. Ramazan Bayramı arefe günü saat 13.00'ten başlayarak 3,5 gün, Kurban Bayramı yine arefe günü 13.00'ten başlayarak 4,5 gündür. Motor bu kuralları her yıl için uygular ve bayram günlerini Diyanet listesinden yerleştirir. Bir gün iki tatile birden denk gelirse, örneğin {d(kb.son)} hem Kurban Bayramının dördüncü günü hem 19 Mayıs olduğunda, o gün bir kez sayılır.</p>
+    <p>Hafta sonuna düşen tatil başka güne aktarılmaz; kanunda böyle bir hüküm yoktur. Bu yüzden toplam tatil süresi ile iş gününden düşen tatil süresi farklıdır. 2027'de toplam tatil {formatDecimal(oz.toplam, 1, 'tr')} gündür; Pazartesi-Cuma çalışan biri için bunun {formatDecimal(oz.haftaIci, 1, 'tr')} günü hafta içine gelir ve yılda {oz.isGunu} iş günü kalır. Cumartesi de çalışılan altı günlük haftada hafta içine gelen tatil {formatDecimal(oz6.haftaIci, 1, 'tr')} gündür. Yarım günler iş günü sayısına tam gün olarak girer, çünkü sabahı çalışılır.</p>
+    <p>Kanunun 2/D maddesi, kamu daireleri için bir ek kural içerir: Cuma akşamı biten bir tatilin ardından gelen Cumartesi de tatildir. Bu kural yalnız Cumartesi çalışan kamu birimlerini ilgilendirdiği için hesaplayıcıların altı günlük hafta seçeneğinde uygulanmaz; sonuçları okurken bunu göz önünde bulundurun.</p>
+
+    <h2>3. Bayram tatili ve izin planlayıcı</h2>
+    <p>Bayram tatili hesaplayıcısı, bayramın çevresindeki takvimi bloklara ayırır: hafta sonu ve tam gün tatillerden oluşan boş bloklar, iş günlerinden oluşan çalışma blokları. Bir çalışma bloğu tamamen izinle kapatılınca iki yanındaki boş bloklar birleşir. Araç, verdiğiniz izin günü sayısıyla en uzun kesintisiz tatili bulur; eşitlikte daha az izin kullanan seçeneği gösterir. Arefe sabahı için alınan izin, işyerinin uygulamasına göre tam ya da yarım gün sayılabilir; varsayılan tam gündür ve “Arefe sabahı için izin” seçeneğiyle değiştirilebilir.</p>
+    <p>Yıllık izin planlayıcısı aynı mantığı yılın tamamına uygular. Hesap, sıralı çalışma blokları üzerinde dinamik programlamadır: her blok için “kapat” ya da “açık bırak” seçeneklerinin bütün birleşimleri arasından, bütçeyi aşmadan en çok boş günü veren seçilir. Sonuç kesindir, deneme yanılma ya da kural değildir. Her izin zinciri hafta içine denk gelen bir tatile değmelidir; tatile değmeyen izin günleri “serbest” olarak ayrıca gösterilir. Örnek: 2027'de 10 gün izin, Pazartesi-Cuma çalışan biri için {o10.bos} gün tatil verir; arefe sabahları yarım gün sayılırsa {o10y.bos}, altı günlük haftada {o10s.bos} gün.</p>
+    <p>Planlayıcı İş Kanununun 56. maddesindeki bölme kuralını uygulamaz: yıllık izin ancak tarafların anlaşmasıyla bölünebilir ve bölümlerden biri en az on gün olmalıdır. Önerilen plan küçük parçalardan oluşuyorsa işverenle anlaşmak gerekir. Köprü günü listesi ise tek bir iş gününün tatil ile hafta sonu arasında kaldığı günleri gösterir.</p>
+
+    <h2>4. İdari izin</h2>
+    <p>Kamu personeline bayram öncesi ya da sonrası verilen idari izin kanunda yer almaz; her seferinde Cumhurbaşkanlığı genelgesiyle duyurulur ve <Fragment set:html={s('resmigazete', 'Resmî Gazete')} />'de yayımlanır. Resmî Gazete'nin {IDARI.taranan.split('/').map(d).join(' – ')} arasındaki tüm sayılarını, mükerrerler dahil, taradık; 2027 için bir idari izin metni bulunmadı. Bu yüzden sitede 2027 idari izni “henüz açıklanmadı” olarak gösterilir. Bir karar yayımlandığında tarihleri, Resmî Gazete sayısıyla birlikte ekleriz. Tahmin yazmayız.</p>
+
+    <h2>5. Ücret ve yıllık izin hakkı</h2>
+    <p>Resmi tatilde çalışma ücreti <Fragment set:html={s('k4857', '4857 sayılı İş Kanununa')} /> göre hesaplanır: tatil günü çalışan işçiye o gün için ayrıca bir günlük ücret ödenir (md. 47). Aylık ücretten günlük ücret 30'a bölünerek, saatlik ücretten 7,5 ile çarpılarak bulunur (md. 49 ve haftalık 45 saatlik süre, md. 63). Arefe öğleden sonrası yarım gün olarak girilir. Hesap brüt ücret üzerindendir; vergi ve kesintiler hesaba katılmaz.</p>
+    <p>Yıllık izin süresi işçide hizmet süresi bir yıldan beş yıla kadar (beş yıl dahil) 14 gün, beş yıldan fazla on beş yıldan az 20 gün, on beş yıl ve üstü 26 gündür; 18 yaş ve altı ile 50 yaş ve üstü işçilere en az 20 gün verilir, yer altı işlerinde bu sürelere 4 gün eklenir (md. 53). Memurda <Fragment set:html={s('k657', '657 sayılı Kanun')} /> on yıla kadar (on yıl dahil) 20, on yıldan fazla hizmette 30 gün öngörür (md. 102). Hesaplayıcı bu sınırları kanun metnindeki gibi uygular.</p>
+
+    <h2>6. İmsak, iftar ve namaz vakitleri</h2>
+    <p>Vakitler 81 il merkezinin koordinatlarından hesaplanır. Koordinatlar Wikidata'dan alınmıştır (CC0 lisansı). Güneşin konumu her gün için Jean Meeus'ün kısaltılmış formülleriyle bulunur. Ölçüler Diyanet'in açıkladığı esaslardır: imsak, güneşin ufkun 18 derece altına geldiği an, yani fecr-i sâdık (<Fragment set:html={s('imsak', 'Diyanet: imsak vakti')} />); yatsı, güneşin 17 derece altına indiği an. Temkin süreleri <Fragment set:html={s('temkin', 'Diyanet\'in temkin açıklamasından')} /> alınır: güneş vakti doğuştan 7 dakika önce, öğle 5 dakika, ikindi 4 dakika, akşam batıştan 7 dakika sonra; imsak ve yatsıda temkin yoktur. Türkiye 2016'dan beri yıl boyu UTC+3 kullandığı için saat dilimi sabittir. Enlem ve boylamın vakitlere etkisi Diyanet'in <Fragment set:html={s('kiyas', 'vakit kıyaslamalarında')} /> anlatılır.</p>
+    <p>Ramazanda sabah ezanı imsak vaktinde okunur; Ramazan dışında daha geç okunur (<Fragment set:html={s('sabah-ezani', 'Diyanet açıklaması')} />). İmsakiyedeki oruç süresi imsak ile akşam arasındaki süredir.</p>
+
+    <h2>7. Diyanet takvimiyle karşılaştırma</h2>
+    <p>Hesabın doğruluğunu ölçmek için <Fragment set:html={s('namazvakitleri', 'Diyanet\'in resmi namaz vakitlerini')} /> {D.iller} il için {d(D.gunler.ilk)} ile {d(D.gunler.son)} arasında, {D.gunler.adet} gün boyunca okuduk ve kendi sonuçlarımızla vakit vakit karşılaştırdık: toplam {D.karsilastirma.toLocaleString('tr-TR')} karşılaştırma. Hiçbir vakitte fark {D.enFazlaFark} dakikayı geçmedi. Aynı dakikayı veren oranlar:</p>
+    <table><thead><tr><th>Vakit</th><th>Aynı dakika</th><th>Ramazan 2027 günlerinde</th></tr></thead><tbody>
+      {Object.keys(ADI).map((k) => <tr><td>{ADI[k]}</td><td>{p(D.tam[k])}</td><td>{p(D.ramazan2027[k])}</td></tr>)}
+    </tbody></table>
+    <p>Kalan durumlarda fark tam bir dakikadır. Bu fark büyük olasılıkla, gerçek vaktin bir dakikanın ortasına yakın düştüğü günlerde yuvarlamanın iki hesapta farklı yöne gitmesinden ya da il merkezi için seçilen noktanın küçük farkından kaynaklanır. En düşük uyum {K.il(enKotu[0]).ad} ilindedir ({p(enKotu[1])}). Diyanet'in saatlerini sitede yayımlamıyoruz; yalnızca karşılaştırma için okuyoruz. 2028 ve sonrası için resmi takvim henüz yayımlanmadığından o yılların imsakiyesi tamamen hesaptır.</p>
+
+    <h2>8. Testler</h2>
+    <p>Her değişiklikten önce otomatik testler çalışır: tatil sayıları ve günleri kanundan çıkan değerlerle, bayram tarihleri Diyanet listesiyle, vakitler karşılaştırma örnekleriyle (en çok bir dakika fark), izin planlayıcı ise artan bütçeyle hiçbir zaman daha az tatil vermediği kuralıyla denetlenir. Bir test başarısız olursa değişiklik yayına çıkmaz.</p>
+
+    <h2>9. Sınırlar</h2>
+    <p>Hesaplayıcılar toplu iş sözleşmenizi, vardiya düzeninizi, işyerinin kapalı olduğu günleri ya da okul tatillerini bilmez. Vakitler il merkezi içindir; ilçede birkaç dakika fark olabilir ve ibadet için resmi takvim esastır. Bayram tarihleri yalnızca Diyanet'in yayımladığı yıllar için gösterilir. İdari izin yalnızca yayımlandıktan sonra eklenir.</p>
+
+    <h2>Sık sorulan sorular</h2>
+    {faqs.map((f) => (<><h3>{f.q}</h3><p>{f.a}</p></>))}
+
+    <h2>10. Güncelleme ve düzeltme</h2>
+    <p>Diyanet listelerini, kanunları ve Resmî Gazete'yi düzenli olarak yeniden okuruz. Bir hata bildirmek için <a href={route('contact', lang)}>iletişim sayfasını</a> kullanın; düzeltme sürecimiz <a href={route('editorial', lang)}>yayın ilkelerinde</a> anlatılır.</p>
+  </article>
+</PageLayout>
